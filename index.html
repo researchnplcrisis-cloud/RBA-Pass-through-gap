@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE PASS-THROUGH GAP — RBA Transmission Monitor</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05070d; --panel:rgba(13,20,36,.72); --panel-brd:rgba(0,229,255,.16);
+  --cyan:#00e5ff; --magenta:#ff2d78; --amber:#ffb454; --lime:#7dff6a;
+  --ink:#dfe9f5; --dim:#6d7f99; --grid:rgba(120,160,220,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink); font-family:'Rajdhani',sans-serif;
+  min-height:100vh; overflow-x:hidden; position:relative;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(0,229,255,.07), transparent 60%),
+    radial-gradient(900px 500px at 0% 110%, rgba(255,45,120,.06), transparent 60%),
+    repeating-linear-gradient(0deg, transparent 0 2px, rgba(255,255,255,.006) 2px 4px);
+}
+.wrap{max-width:1440px;margin:0 auto;padding:28px 32px 48px;position:relative;z-index:1}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;
+  border-bottom:1px solid var(--panel-brd);padding-bottom:18px;margin-bottom:24px}
+.brand h1{font-family:'Orbitron',sans-serif;font-weight:900;font-size:30px;letter-spacing:3px;
+  background:linear-gradient(90deg,var(--cyan),#7ae7ff 45%,var(--magenta));
+  -webkit-background-clip:text;background-clip:text;color:transparent;text-transform:uppercase}
+.brand .sub{color:var(--dim);font-size:15px;letter-spacing:2.5px;text-transform:uppercase;margin-top:4px}
+.status{display:flex;gap:26px;align-items:center}
+.pulse{display:flex;align-items:center;gap:8px;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--lime)}
+.pulse .dot{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime);animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.25}}
+.countdown{text-align:right}
+.countdown .lbl{color:var(--dim);font-size:12px;letter-spacing:2px;text-transform:uppercase}
+.countdown .val{font-family:'Orbitron',sans-serif;font-size:26px;font-weight:700;color:var(--amber);text-shadow:0 0 18px rgba(255,180,84,.45)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:22px}
+.kpi{background:var(--panel);border:1px solid var(--panel-brd);border-radius:12px;padding:16px 18px;position:relative;overflow:hidden;
+  backdrop-filter:blur(6px);transition:transform .2s, box-shadow .2s}
+.kpi:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,229,255,.12)}
+.kpi::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent,var(--cyan));
+  box-shadow:0 0 12px var(--accent,var(--cyan))}
+.kpi .lbl{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.kpi .val{font-family:'Orbitron',sans-serif;font-size:30px;font-weight:700;color:var(--accent,var(--cyan));
+  text-shadow:0 0 20px color-mix(in srgb, var(--accent,var(--cyan)) 40%, transparent)}
+.kpi .note{font-size:13px;color:var(--dim);margin-top:4px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:var(--panel);border:1px solid var(--panel-brd);border-radius:14px;padding:20px 22px 16px;backdrop-filter:blur(6px);position:relative}
+.card.full{grid-column:1/-1}
+.card h2{font-family:'Orbitron',sans-serif;font-size:15px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink)}
+.card .desc{color:var(--dim);font-size:14px;margin:4px 0 12px}
+.card .tag{position:absolute;top:20px;right:22px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--cyan);
+  border:1px solid rgba(0,229,255,.3);padding:3px 10px;border-radius:20px;letter-spacing:1px}
+.chart-box{position:relative;height:360px}
+.chart-box.tall{height:400px}
+.toggle{display:inline-flex;border:1px solid var(--panel-brd);border-radius:8px;overflow:hidden;margin-bottom:12px}
+.toggle button{background:transparent;border:0;color:var(--dim);font-family:'Rajdhani',sans-serif;font-weight:600;
+  font-size:14px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 18px;cursor:pointer;transition:.2s}
+.toggle button.on{background:rgba(0,229,255,.12);color:var(--cyan);text-shadow:0 0 10px rgba(0,229,255,.5)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:1px;color:var(--dim);text-transform:uppercase;
+  text-align:right;padding:10px 12px;border-bottom:1px solid var(--panel-brd)}
+th:first-child,td:first-child{text-align:left}
+td{padding:10px 12px;text-align:right;border-bottom:1px solid rgba(120,160,220,.06);font-weight:600}
+td.ep{font-family:'Orbitron',sans-serif;font-size:13px;letter-spacing:1px;color:var(--ink)}
+.bar-cell{position:relative}
+.pct{display:inline-block;min-width:52px}
+.hi{color:var(--magenta)} .lo{color:var(--cyan)} .mid{color:var(--amber)}
+.meter{height:4px;border-radius:2px;margin-top:4px;background:rgba(255,255,255,.05);overflow:hidden}
+.meter i{display:block;height:100%;border-radius:2px}
+footer{margin-top:26px;color:var(--dim);font-size:13px;line-height:1.6;border-top:1px solid var(--panel-brd);padding-top:14px}
+footer b{color:var(--ink)}
+.mono{font-family:'Share Tech Mono',monospace}
+@media(max-width:980px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand">
+    <h1>The Pass-Through Gap</h1>
+    <div class="sub">RBA Rate Transmission Monitor · Mortgage vs Savings</div>
+  </div>
+  <div class="status">
+    <div class="pulse"><span class="dot"></span><span id="live-lbl">DATA LIVE · RBA F1 F4 F5</span></div>
+    <div class="countdown">
+      <div class="lbl">RBA Decision · Aug 11 2026</div>
+      <div class="val" id="countdown">—</div>
+    </div>
+  </div>
+</header>
+
+<div class="kpis" id="kpis"></div>
+
+<div class="grid">
+  <div class="card full">
+    <h2>Transmission Overlay <span style="color:var(--dim)">/ 2021 → now</span></h2>
+    <div class="desc">The mortgage line hugs the cash rate. The savings line trails it. Shaded: hiking cycles.</div>
+    <span class="tag" id="tag-updated"></span>
+    <div class="chart-box tall"><canvas id="c-overlay"></canvas></div>
+  </div>
+
+  <div class="card">
+    <h2>Pass-Through Scorecard</h2>
+    <div class="desc">Cumulative pass-through of cash rate moves (100 = full).</div>
+    <div class="toggle">
+      <button id="btn-fast" class="on">⚡ 3m after first hike</button>
+      <button id="btn-full">◉ 3m after final hike</button>
+    </div>
+    <div class="chart-box"><canvas id="c-bars"></canvas></div>
+  </div>
+
+  <div class="card">
+    <h2>The Wedge <span style="color:var(--dim)">/ 2004 → now</span></h2>
+    <div class="desc">Mortgage rate minus online saver rate — the margin between both sides of the household balance sheet.</div>
+    <div class="chart-box"><canvas id="c-wedge"></canvas></div>
+  </div>
+
+  <div class="card full">
+    <h2>Episode Matrix</h2>
+    <div class="desc">Every cycle since 2006 — including the 2025 cuts. Pass-through %, mortgage vs deposits.</div>
+    <table id="matrix">
+      <thead><tr>
+        <th>Episode</th><th>Cash Δ</th>
+        <th>Mortgage ⚡fast</th><th>Mortgage ◉full</th>
+        <th>Online saver ⚡fast</th><th>Online saver ◉full</th>
+        <th>Bonus saver ◉full</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<footer>
+  <b>Method.</b> Pass-through = Δ retail rate ÷ Δ cash rate target, from the month before each episode's first hike; "fast" at +3 months from first hike, "full" at +3 months from final hike (2026: at latest data).
+  <b>Sources.</b> RBA Statistical Tables <span class="mono">F1.1</span> (cash rate target), <span class="mono">F5</span> (indicator lending rates: standard &amp; discounted variable, owner-occupier), <span class="mono">F4</span> (retail deposit rates: online &amp; bonus savers, $10k). Advertised indicator rates, sample of institutions; system-wide behaviour, no individual bank described. Author's calculations · data to <span id="ft-data"></span>.
+</footer>
+</div>
+
+<script>
+const DATA = {"updated": "2026-07-03", "dataTo": "May 2026", "overlay": [{"d": "2021-01", "cash": 0.1, "svr": 4.52, "disc": 3.65, "saver": 0.2}, {"d": "2021-02", "cash": 0.1, "svr": 4.52, "disc": 3.65, "saver": 0.2}, {"d": "2021-03", "cash": 0.1, "svr": 4.52, "disc": 3.65, "saver": 0.2}, {"d": "2021-04", "cash": 0.1, "svr": 4.52, "disc": 3.59, "saver": 0.15}, {"d": "2021-05", "cash": 0.1, "svr": 4.52, "disc": 3.59, "saver": 0.2}, {"d": "2021-06", "cash": 0.1, "svr": 4.52, "disc": 3.59, "saver": 0.2}, {"d": "2021-07", "cash": 0.1, "svr": 4.52, "disc": 3.6, "saver": 0.2}, {"d": "2021-08", "cash": 0.1, "svr": 4.52, "disc": 3.45, "saver": 0.2}, {"d": "2021-09", "cash": 0.1, "svr": 4.52, "disc": 3.45, "saver": 0.2}, {"d": "2021-10", "cash": 0.1, "svr": 4.52, "disc": 3.45, "saver": 0.2}, {"d": "2021-11", "cash": 0.1, "svr": 4.52, "disc": 3.45, "saver": 0.2}, {"d": "2021-12", "cash": 0.1, "svr": 4.52, "disc": 3.45, "saver": 0.2}, {"d": "2022-01", "cash": 0.1, "svr": 4.52, "disc": 3.45, "saver": 0.2}, {"d": "2022-02", "cash": 0.1, "svr": 4.52, "disc": 3.45, "saver": 0.2}, {"d": "2022-03", "cash": 0.1, "svr": 4.52, "disc": 3.45, "saver": 0.2}, {"d": "2022-04", "cash": 0.1, "svr": 4.52, "disc": 3.45, "saver": 0.2}, {"d": "2022-05", "cash": 0.35, "svr": 4.77, "disc": 3.7, "saver": 0.3}, {"d": "2022-06", "cash": 0.85, "svr": 5.27, "disc": 4.2, "saver": 0.5}, {"d": "2022-07", "cash": 1.35, "svr": 5.77, "disc": 4.7, "saver": 0.75}, {"d": "2022-08", "cash": 1.85, "svr": 6.27, "disc": 5.2, "saver": 1.15}, {"d": "2022-09", "cash": 2.35, "svr": 6.77, "disc": 5.7, "saver": 1.45}, {"d": "2022-10", "cash": 2.6, "svr": 7.02, "disc": 5.95, "saver": 1.6}, {"d": "2022-11", "cash": 2.85, "svr": 7.27, "disc": 5.72, "saver": 1.7}, {"d": "2022-12", "cash": 3.1, "svr": 7.52, "disc": 5.97, "saver": 1.9}, {"d": "2023-01", "cash": 3.1, "svr": 7.52, "disc": 5.97, "saver": 1.9}, {"d": "2023-02", "cash": 3.35, "svr": 7.77, "disc": 6.22, "saver": 2.05}, {"d": "2023-03", "cash": 3.6, "svr": 8.02, "disc": 6.43, "saver": 2.25}, {"d": "2023-04", "cash": 3.6, "svr": 8.02, "disc": 6.49, "saver": 2.25}, {"d": "2023-05", "cash": 3.85, "svr": 8.27, "disc": 6.79, "saver": 2.35}, {"d": "2023-06", "cash": 4.1, "svr": 8.52, "disc": 7.06, "saver": 2.5}, {"d": "2023-07", "cash": 4.1, "svr": 8.52, "disc": 7.06, "saver": 2.5}, {"d": "2023-08", "cash": 4.1, "svr": 8.52, "disc": 7.06, "saver": 2.5}, {"d": "2023-09", "cash": 4.1, "svr": 8.52, "disc": 7.06, "saver": 2.5}, {"d": "2023-10", "cash": 4.1, "svr": 8.52, "disc": 7.06, "saver": 2.5}, {"d": "2023-11", "cash": 4.35, "svr": 8.77, "disc": 7.31, "saver": 2.55}, {"d": "2023-12", "cash": 4.35, "svr": 8.77, "disc": 7.31, "saver": 2.55}, {"d": "2024-01", "cash": 4.35, "svr": 8.77, "disc": 7.31, "saver": 2.55}, {"d": "2024-02", "cash": 4.35, "svr": 8.77, "disc": 7.31, "saver": 2.35}, {"d": "2024-03", "cash": 4.35, "svr": 8.77, "disc": 7.31, "saver": 2.35}, {"d": "2024-04", "cash": 4.35, "svr": 8.77, "disc": 7.12, "saver": 2.65}, {"d": "2024-05", "cash": 4.35, "svr": 8.77, "disc": 7.12, "saver": 2.65}, {"d": "2024-06", "cash": 4.35, "svr": 8.77, "disc": 7.12, "saver": 2.65}, {"d": "2024-07", "cash": 4.35, "svr": 8.77, "disc": 7.12, "saver": 2.65}, {"d": "2024-08", "cash": 4.35, "svr": 8.77, "disc": 7.07, "saver": 2.65}, {"d": "2024-09", "cash": 4.35, "svr": 8.77, "disc": 7.07, "saver": 2.6}, {"d": "2024-10", "cash": 4.35, "svr": 8.77, "disc": 7.07, "saver": 2.6}, {"d": "2024-11", "cash": 4.35, "svr": 8.77, "disc": 7.07, "saver": 2.6}, {"d": "2024-12", "cash": 4.35, "svr": 8.77, "disc": 7.07, "saver": 2.6}, {"d": "2025-01", "cash": 4.35, "svr": 8.77, "disc": 7.07, "saver": 2.6}, {"d": "2025-02", "cash": 4.1, "svr": 8.62, "disc": 6.88, "saver": 2.75}, {"d": "2025-03", "cash": 4.1, "svr": 8.52, "disc": 6.82, "saver": 2.65}, {"d": "2025-04", "cash": 4.1, "svr": 8.52, "disc": 6.55, "saver": 2.65}, {"d": "2025-05", "cash": 3.85, "svr": 8.37, "disc": 6.37, "saver": 2.45}, {"d": "2025-06", "cash": 3.85, "svr": 8.27, "disc": 6.3, "saver": 2.45}, {"d": "2025-07", "cash": 3.85, "svr": 8.27, "disc": 6.3, "saver": 2.45}, {"d": "2025-08", "cash": 3.6, "svr": 8.02, "disc": 6.05, "saver": 2.3}, {"d": "2025-09", "cash": 3.6, "svr": 8.02, "disc": 6.05, "saver": 2.3}, {"d": "2025-10", "cash": 3.6, "svr": 8.02, "disc": 6.05, "saver": 2.3}, {"d": "2025-11", "cash": 3.6, "svr": 8.02, "disc": 6.05, "saver": 2.3}, {"d": "2025-12", "cash": 3.6, "svr": 8.02, "disc": 6.05, "saver": 2.3}, {"d": "2026-01", "cash": 3.6, "svr": 8.02, "disc": 6.05, "saver": 2.3}, {"d": "2026-02", "cash": 3.85, "svr": 8.27, "disc": 6.3, "saver": 2.5}, {"d": "2026-03", "cash": 4.1, "svr": 8.52, "disc": 6.55, "saver": 2.7}, {"d": "2026-04", "cash": 4.1, "svr": 8.52, "disc": 6.55, "saver": 2.7}, {"d": "2026-05", "cash": 4.35, "svr": 8.77, "disc": 6.8, "saver": 3.05}, {"d": "2026-06", "cash": 4.35, "svr": null, "disc": null, "saver": null}], "wedge": [{"d": "2004-01", "w1": null, "w2": 2.12}, {"d": "2004-02", "w1": null, "w2": 2.07}, {"d": "2004-03", "w1": null, "w2": 2.07}, {"d": "2004-04", "w1": null, "w2": 2.07}, {"d": "2004-05", "w1": null, "w2": 2.07}, {"d": "2004-06", "w1": 1.59, "w2": 2.07}, {"d": "2004-07", "w1": 1.59, "w2": 2.07}, {"d": "2004-08", "w1": 1.59, "w2": 2.07}, {"d": "2004-09", "w1": 1.59, "w2": 2.07}, {"d": "2004-10", "w1": 1.59, "w2": 2.07}, {"d": "2004-11", "w1": 1.44, "w2": 1.92}, {"d": "2004-12", "w1": 1.44, "w2": 1.92}, {"d": "2005-01", "w1": 1.39, "w2": 1.87}, {"d": "2005-02", "w1": 1.39, "w2": 1.87}, {"d": "2005-03", "w1": 1.42, "w2": 1.92}, {"d": "2005-04", "w1": 1.42, "w2": 1.92}, {"d": "2005-05", "w1": 1.38, "w2": 1.92}, {"d": "2005-06", "w1": 1.38, "w2": 1.92}, {"d": "2005-07", "w1": 1.3, "w2": 1.92}, {"d": "2005-08", "w1": 1.3, "w2": 1.92}, {"d": "2005-09", "w1": 1.28, "w2": 1.92}, {"d": "2005-10", "w1": 1.32, "w2": 1.92}, {"d": "2005-11", "w1": 1.32, "w2": 1.92}, {"d": "2005-12", "w1": 1.32, "w2": 1.92}, {"d": "2006-01", "w1": 1.27, "w2": 1.87}, {"d": "2006-02", "w1": 1.19, "w2": 1.87}, {"d": "2006-03", "w1": 1.19, "w2": 1.87}, {"d": "2006-04", "w1": 1.23, "w2": 1.87}, {"d": "2006-05", "w1": 1.38, "w2": 2.02}, {"d": "2006-06", "w1": 1.43, "w2": 2.07}, {"d": "2006-07", "w1": 1.47, "w2": 2.07}, {"d": "2006-08", "w1": 1.57, "w2": 2.17}, {"d": "2006-09", "w1": 1.52, "w2": 2.12}, {"d": "2006-10", "w1": 1.52, "w2": 2.12}, {"d": "2006-11", "w1": 1.58, "w2": 2.22}, {"d": "2006-12", "w1": 1.62, "w2": 2.22}, {"d": "2007-01", "w1": 1.67, "w2": 2.27}, {"d": "2007-02", "w1": 1.67, "w2": 2.27}, {"d": "2007-03", "w1": 1.67, "w2": 2.27}, {"d": "2007-04", "w1": 1.67, "w2": 2.27}, {"d": "2007-05", "w1": 1.57, "w2": 2.17}, {"d": "2007-06", "w1": 1.32, "w2": 1.92}, {"d": "2007-07", "w1": 1.22, "w2": 1.82}, {"d": "2007-08", "w1": 1.27, "w2": 1.87}, {"d": "2007-09", "w1": 1.27, "w2": 1.87}, {"d": "2007-10", "w1": 1.22, "w2": 1.82}, {"d": "2007-11", "w1": 1.37, "w2": 1.97}, {"d": "2007-12", "w1": 1.32, "w2": 1.92}, {"d": "2008-01", "w1": 1.5, "w2": 2.12}, {"d": "2008-02", "w1": 1.53, "w2": 2.19}, {"d": "2008-03", "w1": 1.7, "w2": 2.34}, {"d": "2008-04", "w1": 1.87, "w2": 2.49}, {"d": "2008-05", "w1": 1.84, "w2": 2.46}, {"d": "2008-06", "w1": 1.74, "w2": 2.36}, {"d": "2008-07", "w1": 1.86, "w2": 2.52}, {"d": "2008-08", "w1": 1.86, "w2": 2.52}, {"d": "2008-09", "w1": 1.81, "w2": 2.41}, {"d": "2008-10", "w1": 1.45, "w2": 2.09}, {"d": "2008-11", "w1": 1.69, "w2": 2.33}, {"d": "2008-12", "w1": 1.8, "w2": 2.44}, {"d": "2009-01", "w1": 1.95, "w2": 2.59}, {"d": "2009-02", "w1": 1.98, "w2": 2.64}, {"d": "2009-03", "w1": 1.98, "w2": 2.64}, {"d": "2009-04", "w1": 2.07, "w2": 2.71}, {"d": "2009-05", "w1": 1.97, "w2": 2.61}, {"d": "2009-06", "w1": 1.99, "w2": 2.63}, {"d": "2009-07", "w1": 1.99, "w2": 2.63}, {"d": "2009-08", "w1": 1.99, "w2": 2.63}, {"d": "2009-09", "w1": 2.04, "w2": 2.68}, {"d": "2009-10", "w1": 2.24, "w2": 2.88}, {"d": "2009-11", "w1": 2.29, "w2": 2.93}, {"d": "2009-12", "w1": 2.35, "w2": 2.99}, {"d": "2010-01", "w1": 1.95, "w2": 2.59}, {"d": "2010-02", "w1": 1.95, "w2": 2.59}, {"d": "2010-03", "w1": 2.4, "w2": 3.04}, {"d": "2010-04", "w1": 2.45, "w2": 3.09}, {"d": "2010-05", "w1": 2.4, "w2": 3.04}, {"d": "2010-06", "w1": 2.4, "w2": 3.04}, {"d": "2010-07", "w1": 2.4, "w2": 3.04}, {"d": "2010-08", "w1": 2.4, "w2": 3.04}, {"d": "2010-09", "w1": 2.4, "w2": 3.04}, {"d": "2010-10", "w1": 2.4, "w2": 3.04}, {"d": "2010-11", "w1": 2.65, "w2": 3.29}, {"d": "2010-12", "w1": 2.6, "w2": 3.24}, {"d": "2011-01", "w1": 2.6, "w2": 3.24}, {"d": "2011-02", "w1": 2.61, "w2": 3.29}, {"d": "2011-03", "w1": 2.61, "w2": 3.29}, {"d": "2011-04", "w1": 2.54, "w2": 3.24}, {"d": "2011-05", "w1": 2.53, "w2": 3.24}, {"d": "2011-06", "w1": 2.49, "w2": 3.24}, {"d": "2011-07", "w1": 2.49, "w2": 3.24}, {"d": "2011-08", "w1": 2.53, "w2": 3.29}, {"d": "2011-09", "w1": 2.53, "w2": 3.29}, {"d": "2011-10", "w1": 2.53, "w2": 3.29}, {"d": "2011-11", "w1": 2.54, "w2": 3.3}, {"d": "2011-12", "w1": 2.54, "w2": 3.3}, {"d": "2012-01", "w1": 2.59, "w2": 3.3}, {"d": "2012-02", "w1": 2.71, "w2": 3.39}, {"d": "2012-03", "w1": 2.71, "w2": 3.39}, {"d": "2012-04", "w1": 2.72, "w2": 3.4}, {"d": "2012-05", "w1": 2.86, "w2": 3.54}, {"d": "2012-06", "w1": 2.83, "w2": 3.53}, {"d": "2012-07", "w1": 2.83, "w2": 3.53}, {"d": "2012-08", "w1": 2.8, "w2": 3.53}, {"d": "2012-09", "w1": 2.83, "w2": 3.58}, {"d": "2012-10", "w1": 2.84, "w2": 3.59}, {"d": "2012-11", "w1": 2.79, "w2": 3.59}, {"d": "2012-12", "w1": 2.88, "w2": 3.64}, {"d": "2013-01", "w1": 2.88, "w2": 3.64}, {"d": "2013-02", "w1": 2.91, "w2": 3.69}, {"d": "2013-03", "w1": 2.92, "w2": 3.74}, {"d": "2013-04", "w1": 2.92, "w2": 3.74}, {"d": "2013-05", "w1": 2.86, "w2": 3.68}, {"d": "2013-06", "w1": 2.86, "w2": 3.68}, {"d": "2013-07", "w1": 2.85, "w2": 3.68}, {"d": "2013-08", "w1": 2.85, "w2": 3.68}, {"d": "2013-09", "w1": 2.83, "w2": 3.68}, {"d": "2013-10", "w1": 2.83, "w2": 3.68}, {"d": "2013-11", "w1": 2.68, "w2": 3.53}, {"d": "2013-12", "w1": 2.7, "w2": 3.53}, {"d": "2014-01", "w1": 2.68, "w2": 3.53}, {"d": "2014-02", "w1": 2.68, "w2": 3.53}, {"d": "2014-03", "w1": 2.68, "w2": 3.53}, {"d": "2014-04", "w1": 2.68, "w2": 3.53}, {"d": "2014-05", "w1": 2.68, "w2": 3.53}, {"d": "2014-06", "w1": 2.68, "w2": 3.53}, {"d": "2014-07", "w1": 2.83, "w2": 3.68}, {"d": "2014-08", "w1": 2.88, "w2": 3.73}, {"d": "2014-09", "w1": 2.88, "w2": 3.73}, {"d": "2014-10", "w1": 2.88, "w2": 3.73}, {"d": "2014-11", "w1": 2.88, "w2": 3.73}, {"d": "2014-12", "w1": 2.78, "w2": 3.63}, {"d": "2015-01", "w1": 2.78, "w2": 3.63}, {"d": "2015-02", "w1": 2.62, "w2": 3.47}, {"d": "2015-03", "w1": 2.72, "w2": 3.57}, {"d": "2015-04", "w1": 2.72, "w2": 3.57}, {"d": "2015-05", "w1": 2.76, "w2": 3.61}, {"d": "2015-06", "w1": 2.82, "w2": 3.61}, {"d": "2015-07", "w1": 2.87, "w2": 3.65}, {"d": "2015-08", "w1": 2.86, "w2": 3.66}, {"d": "2015-09", "w1": 2.86, "w2": 3.66}, {"d": "2015-10", "w1": 2.86, "w2": 3.66}, {"d": "2015-11", "w1": 3.03, "w2": 3.83}, {"d": "2015-12", "w1": 3.03, "w2": 3.83}, {"d": "2016-01", "w1": 3.03, "w2": 3.83}, {"d": "2016-02", "w1": 3.03, "w2": 3.83}, {"d": "2016-03", "w1": 3.03, "w2": 3.83}, {"d": "2016-04", "w1": 3.03, "w2": 3.83}, {"d": "2016-05", "w1": 3.09, "w2": 3.89}, {"d": "2016-06", "w1": 3.09, "w2": 3.89}, {"d": "2016-07", "w1": 3.09, "w2": 3.89}, {"d": "2016-08", "w1": 2.86, "w2": 3.66}, {"d": "2016-09", "w1": 2.96, "w2": 3.71}, {"d": "2016-10", "w1": 2.96, "w2": 3.71}, {"d": "2016-11", "w1": 2.96, "w2": 3.71}, {"d": "2016-12", "w1": 3.01, "w2": 3.76}, {"d": "2017-01", "w1": 3.06, "w2": 3.81}, {"d": "2017-02", "w1": 3.06, "w2": 3.81}, {"d": "2017-03", "w1": 3.08, "w2": 3.83}, {"d": "2017-04", "w1": 3.08, "w2": 3.83}, {"d": "2017-05", "w1": 3.09, "w2": 3.84}, {"d": "2017-06", "w1": 3.03, "w2": 3.78}, {"d": "2017-07", "w1": 3.02, "w2": 3.77}, {"d": "2017-08", "w1": 3.02, "w2": 3.77}, {"d": "2017-09", "w1": 3.07, "w2": 3.82}, {"d": "2017-10", "w1": 3.07, "w2": 3.82}, {"d": "2017-11", "w1": 3.12, "w2": 3.87}, {"d": "2017-12", "w1": 3.16, "w2": 3.87}, {"d": "2018-01", "w1": 3.46, "w2": 4.17}, {"d": "2018-02", "w1": 3.51, "w2": 4.22}, {"d": "2018-03", "w1": 3.51, "w2": 4.22}, {"d": "2018-04", "w1": 3.51, "w2": 4.22}, {"d": "2018-05", "w1": 3.51, "w2": 4.22}, {"d": "2018-06", "w1": 3.51, "w2": 4.22}, {"d": "2018-07", "w1": 3.56, "w2": 4.27}, {"d": "2018-08", "w1": 3.61, "w2": 4.32}, {"d": "2018-09", "w1": 3.72, "w2": 4.41}, {"d": "2018-10", "w1": 3.75, "w2": 4.44}, {"d": "2018-11", "w1": 3.75, "w2": 4.44}, {"d": "2018-12", "w1": 3.75, "w2": 4.44}, {"d": "2019-01", "w1": 3.78, "w2": 4.47}, {"d": "2019-02", "w1": 3.78, "w2": 4.47}, {"d": "2019-03", "w1": 3.78, "w2": 4.47}, {"d": "2019-04", "w1": 3.78, "w2": 4.47}, {"d": "2019-05", "w1": 3.78, "w2": 4.47}, {"d": "2019-06", "w1": 3.81, "w2": 4.5}, {"d": "2019-07", "w1": 3.7, "w2": 4.39}, {"d": "2019-08", "w1": 3.7, "w2": 4.39}, {"d": "2019-09", "w1": 3.75, "w2": 4.44}, {"d": "2019-10", "w1": 3.7, "w2": 4.35}, {"d": "2019-11", "w1": 3.7, "w2": 4.35}, {"d": "2019-12", "w1": 3.7, "w2": 4.35}, {"d": "2020-01", "w1": 3.7, "w2": 4.35}, {"d": "2020-02", "w1": 3.7, "w2": 4.35}, {"d": "2020-03", "w1": 3.51, "w2": 4.12}, {"d": "2020-04", "w1": 3.56, "w2": 4.17}, {"d": "2020-05", "w1": 3.52, "w2": 4.17}, {"d": "2020-06", "w1": 3.3, "w2": 4.17}, {"d": "2020-07", "w1": 3.3, "w2": 4.17}, {"d": "2020-08", "w1": 3.3, "w2": 4.17}, {"d": "2020-09", "w1": 3.3, "w2": 4.17}, {"d": "2020-10", "w1": 3.35, "w2": 4.22}, {"d": "2020-11", "w1": 3.45, "w2": 4.32}, {"d": "2020-12", "w1": 3.45, "w2": 4.32}, {"d": "2021-01", "w1": 3.45, "w2": 4.32}, {"d": "2021-02", "w1": 3.45, "w2": 4.32}, {"d": "2021-03", "w1": 3.45, "w2": 4.32}, {"d": "2021-04", "w1": 3.44, "w2": 4.37}, {"d": "2021-05", "w1": 3.39, "w2": 4.32}, {"d": "2021-06", "w1": 3.39, "w2": 4.32}, {"d": "2021-07", "w1": 3.4, "w2": 4.32}, {"d": "2021-08", "w1": 3.25, "w2": 4.32}, {"d": "2021-09", "w1": 3.25, "w2": 4.32}, {"d": "2021-10", "w1": 3.25, "w2": 4.32}, {"d": "2021-11", "w1": 3.25, "w2": 4.32}, {"d": "2021-12", "w1": 3.25, "w2": 4.32}, {"d": "2022-01", "w1": 3.25, "w2": 4.32}, {"d": "2022-02", "w1": 3.25, "w2": 4.32}, {"d": "2022-03", "w1": 3.25, "w2": 4.32}, {"d": "2022-04", "w1": 3.25, "w2": 4.32}, {"d": "2022-05", "w1": 3.4, "w2": 4.47}, {"d": "2022-06", "w1": 3.7, "w2": 4.77}, {"d": "2022-07", "w1": 3.95, "w2": 5.02}, {"d": "2022-08", "w1": 4.05, "w2": 5.12}, {"d": "2022-09", "w1": 4.25, "w2": 5.32}, {"d": "2022-10", "w1": 4.35, "w2": 5.42}, {"d": "2022-11", "w1": 4.02, "w2": 5.57}, {"d": "2022-12", "w1": 4.07, "w2": 5.62}, {"d": "2023-01", "w1": 4.07, "w2": 5.62}, {"d": "2023-02", "w1": 4.17, "w2": 5.72}, {"d": "2023-03", "w1": 4.18, "w2": 5.77}, {"d": "2023-04", "w1": 4.24, "w2": 5.77}, {"d": "2023-05", "w1": 4.44, "w2": 5.92}, {"d": "2023-06", "w1": 4.56, "w2": 6.02}, {"d": "2023-07", "w1": 4.56, "w2": 6.02}, {"d": "2023-08", "w1": 4.56, "w2": 6.02}, {"d": "2023-09", "w1": 4.56, "w2": 6.02}, {"d": "2023-10", "w1": 4.56, "w2": 6.02}, {"d": "2023-11", "w1": 4.76, "w2": 6.22}, {"d": "2023-12", "w1": 4.76, "w2": 6.22}, {"d": "2024-01", "w1": 4.76, "w2": 6.22}, {"d": "2024-02", "w1": 4.96, "w2": 6.42}, {"d": "2024-03", "w1": 4.96, "w2": 6.42}, {"d": "2024-04", "w1": 4.47, "w2": 6.12}, {"d": "2024-05", "w1": 4.47, "w2": 6.12}, {"d": "2024-06", "w1": 4.47, "w2": 6.12}, {"d": "2024-07", "w1": 4.47, "w2": 6.12}, {"d": "2024-08", "w1": 4.42, "w2": 6.12}, {"d": "2024-09", "w1": 4.47, "w2": 6.17}, {"d": "2024-10", "w1": 4.47, "w2": 6.17}, {"d": "2024-11", "w1": 4.47, "w2": 6.17}, {"d": "2024-12", "w1": 4.47, "w2": 6.17}, {"d": "2025-01", "w1": 4.47, "w2": 6.17}, {"d": "2025-02", "w1": 4.13, "w2": 5.87}, {"d": "2025-03", "w1": 4.17, "w2": 5.87}, {"d": "2025-04", "w1": 3.9, "w2": 5.87}, {"d": "2025-05", "w1": 3.92, "w2": 5.92}, {"d": "2025-06", "w1": 3.85, "w2": 5.82}, {"d": "2025-07", "w1": 3.85, "w2": 5.82}, {"d": "2025-08", "w1": 3.75, "w2": 5.72}, {"d": "2025-09", "w1": 3.75, "w2": 5.72}, {"d": "2025-10", "w1": 3.75, "w2": 5.72}, {"d": "2025-11", "w1": 3.75, "w2": 5.72}, {"d": "2025-12", "w1": 3.75, "w2": 5.72}, {"d": "2026-01", "w1": 3.75, "w2": 5.72}, {"d": "2026-02", "w1": 3.8, "w2": 5.77}, {"d": "2026-03", "w1": 3.85, "w2": 5.82}, {"d": "2026-04", "w1": 3.85, "w2": 5.82}, {"d": "2026-05", "w1": 3.75, "w2": 5.72}, {"d": "2026-06", "w1": null, "w2": null}], "episodes": [{"name": "2006\u201308", "delta": "+1.75pp", "fast": {"svr": 100.0, "saver": 40.0, "bonus": 110.0}, "full": {"svr": 122.3, "saver": 94.3, "bonus": 105.7}}, {"name": "2009\u201310", "delta": "+1.75pp", "fast": {"svr": 114.7, "saver": 126.7, "bonus": 106.7}, "full": {"svr": 114.9, "saver": 80.0, "bonus": 157.1}}, {"name": "2022\u201323", "delta": "+4.25pp", "fast": {"svr": 100.0, "saver": 54.3, "bonus": 85.7}, "full": {"svr": 100.0, "saver": 50.6, "bonus": 109.4}}, {"name": "2026 (live)", "delta": "+0.75pp", "fast": {"svr": 100.0, "saver": 100.0, "bonus": 106.7}, "full": {"svr": 100.0, "saver": 100.0, "bonus": 106.7}}], "cuts": {"name": "2025 cuts", "delta": "\u22120.75pp", "fast": {"svr": 80.0, "saver": 30.0, "bonus": 90.0}, "full": {"svr": 100.0, "saver": 40.0, "bonus": 113.3}}, "kpi": {"cash": 4.35, "svr": 8.77, "disc": 6.8, "saver": 3.05, "bonus": 4.8, "wedge": 3.75, "wedgePeak": 4.96}, "hikes26": [["Feb 4", 0.25], ["Mar 18", 0.25], ["May 6", 0.25]]};
+
+const CY="#00e5ff", MG="#ff2d78", AM="#ffb454", LM="#7dff6a", DIM="#6d7f99", GRID="rgba(120,160,220,.08)";
+Chart.defaults.font.family="'Rajdhani',sans-serif";
+Chart.defaults.font.size=13;
+Chart.defaults.color=DIM;
+
+// ---------- countdown ----------
+(function(){
+  const target=new Date("2026-08-11T14:30:00+10:00"), now=new Date();
+  const d=Math.max(0,Math.ceil((target-now)/86400000));
+  document.getElementById("countdown").textContent="T-"+d+" DAYS";
+})();
+document.getElementById("tag-updated").textContent="DATA → "+DATA.dataTo.toUpperCase();
+document.getElementById("ft-data").textContent=DATA.dataTo;
+
+// ---------- KPIs ----------
+const k=DATA.kpi;
+const kpis=[
+  {lbl:"Cash rate target",val:k.cash.toFixed(2)+"%",note:"after 3 hikes in 2026",acc:LM},
+  {lbl:"Std variable mortgage",val:k.svr.toFixed(2)+"%",note:"discounted: "+k.disc.toFixed(2)+"%",acc:MG},
+  {lbl:"Online saver",val:k.saver.toFixed(2)+"%",note:"bonus saver: "+k.bonus.toFixed(2)+"%",acc:CY},
+  {lbl:"The wedge",val:k.wedge.toFixed(2)+"pp",note:"peak this cycle: "+k.wedgePeak.toFixed(2)+"pp",acc:AM},
+  {lbl:"2022–23 asymmetry",val:"100 / 51",note:"mortgage vs saver pass-through %",acc:MG},
+];
+document.getElementById("kpis").innerHTML=kpis.map(x=>
+  `<div class="kpi" style="--accent:${x.acc}"><div class="lbl">${x.lbl}</div><div class="val">${x.val}</div><div class="note">${x.note}</div></div>`).join("");
+
+// ---------- helpers ----------
+function glow(color){return {borderColor:color, pointRadius:0, borderWidth:2.4, tension:.25,
+  shadowColor:color}}
+const shadePlugin={id:"shade",beforeDraw(chart,args,opts){
+  if(!opts.bands) return;
+  const {ctx,chartArea,scales}=chart, x=scales.x;
+  ctx.save();
+  opts.bands.forEach(([a,b])=>{
+    const ia=chart.data.labels.indexOf(a), ib=chart.data.labels.indexOf(b);
+    if(ia<0) return;
+    const x1=x.getPixelForValue(ia), x2=x.getPixelForValue(ib<0?chart.data.labels.length-1:ib);
+    const g=ctx.createLinearGradient(x1,0,x2,0);
+    g.addColorStop(0,"rgba(255,45,120,.05)");g.addColorStop(.5,"rgba(255,180,84,.08)");g.addColorStop(1,"rgba(255,45,120,.05)");
+    ctx.fillStyle=g; ctx.fillRect(x1,chartArea.top,x2-x1,chartArea.bottom-chartArea.top);
+  });
+  ctx.restore();
+}};
+const glowLine={id:"glowLine",beforeDatasetsDraw(c){c.ctx.save();c.ctx.shadowBlur=8;},
+  afterDatasetsDraw(c){c.ctx.restore();}};
+Chart.register(shadePlugin);
+
+function yearTicks(labels){return {callback:(v,i)=>{const l=labels[i];return l&&l.endsWith("-01")?l.slice(0,4):null},
+  maxRotation:0,autoSkip:false,color:DIM}}
+
+const legendCfg={labels:{usePointStyle:true,pointStyle:"line",boxWidth:30,color:"#aebdd2",font:{size:13,weight:"600"}}};
+
+// ---------- overlay ----------
+(function(){
+  const d=DATA.overlay, labels=d.map(r=>r.d);
+  new Chart(document.getElementById("c-overlay"),{
+    type:"line",
+    data:{labels,datasets:[
+      {label:"Cash rate target",data:d.map(r=>r.cash),...glow(LM),borderWidth:3},
+      {label:"Std variable mortgage",data:d.map(r=>r.svr),...glow(MG)},
+      {label:"Discounted variable",data:d.map(r=>r.disc),...glow(MG),borderDash:[6,4],borderWidth:1.6},
+      {label:"Online saver",data:d.map(r=>r.saver),...glow(CY)},
+    ]},
+    options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+      plugins:{legend:legendCfg,shade:{bands:[["2022-05","2023-11"],["2026-02","2026-05"]]},
+        tooltip:{backgroundColor:"rgba(8,14,26,.95)",borderColor:"rgba(0,229,255,.3)",borderWidth:1,
+          titleFont:{family:"'Share Tech Mono',monospace"},callbacks:{label:c=>" "+c.dataset.label+": "+c.parsed.y?.toFixed(2)+"%"}}},
+      scales:{x:{grid:{color:GRID},ticks:yearTicks(labels)},
+        y:{grid:{color:GRID},ticks:{callback:v=>v+"%"},suggestedMax:9.5,beginAtZero:true}}}
+  });
+})();
+
+// ---------- pass-through bars ----------
+let barsChart, mode="fast";
+function drawBars(){
+  const eps=DATA.episodes, get=(e,s)=>e[mode][s];
+  const cfg={
+    type:"bar",
+    data:{labels:eps.map(e=>e.name),datasets:[
+      {label:"Variable mortgage",data:eps.map(e=>get(e,"svr")),backgroundColor:"rgba(255,45,120,.75)",borderColor:MG,borderWidth:1.5,borderRadius:5},
+      {label:"Online saver",data:eps.map(e=>get(e,"saver")),backgroundColor:"rgba(0,229,255,.65)",borderColor:CY,borderWidth:1.5,borderRadius:5},
+      {label:"Bonus saver",data:eps.map(e=>get(e,"bonus")),backgroundColor:"rgba(255,180,84,.55)",borderColor:AM,borderWidth:1.5,borderRadius:5},
+    ]},
+    options:{maintainAspectRatio:false,
+      plugins:{legend:legendCfg,
+        tooltip:{backgroundColor:"rgba(8,14,26,.95)",borderColor:"rgba(0,229,255,.3)",borderWidth:1,
+          callbacks:{label:c=>" "+c.dataset.label+": "+c.parsed.y+"% of cash move"}},
+        annotationLine:{}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:13,weight:"600"},color:"#aebdd2"}},
+        y:{grid:{color:GRID},suggestedMax:170,ticks:{callback:v=>v+"%"},
+           title:{display:true,text:"pass-through of cash rate change",color:DIM}}}}
+  };
+  const hundred={id:"hundred",afterDraw(c){
+    const y=c.scales.y.getPixelForValue(100),{left,right}=c.chartArea,ctx=c.ctx;
+    ctx.save();ctx.strokeStyle="rgba(125,255,106,.5)";ctx.setLineDash([5,5]);ctx.lineWidth=1.2;
+    ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(right,y);ctx.stroke();
+    ctx.fillStyle="rgba(125,255,106,.8)";ctx.font="11px 'Share Tech Mono'";
+    ctx.fillText("FULL PASS-THROUGH",left+6,y-6);ctx.restore();}};
+  if(barsChart) barsChart.destroy();
+  barsChart=new Chart(document.getElementById("c-bars"),{...cfg,plugins:[hundred]});
+}
+drawBars();
+const bf=document.getElementById("btn-fast"), bl=document.getElementById("btn-full");
+bf.onclick=()=>{mode="fast";bf.classList.add("on");bl.classList.remove("on");drawBars();};
+bl.onclick=()=>{mode="full";bl.classList.add("on");bf.classList.remove("on");drawBars();};
+
+// ---------- wedge ----------
+(function(){
+  const d=DATA.wedge, labels=d.map(r=>r.d);
+  new Chart(document.getElementById("c-wedge"),{
+    type:"line",
+    data:{labels,datasets:[
+      {label:"Discounted mortgage − online saver",data:d.map(r=>r.w1),...glow(AM),
+       fill:true,backgroundColor:(ctx)=>{const g=ctx.chart.ctx.createLinearGradient(0,0,0,360);
+         g.addColorStop(0,"rgba(255,180,84,.28)");g.addColorStop(1,"rgba(255,180,84,.01)");return g}},
+      {label:"Std variable − online saver",data:d.map(r=>r.w2),...glow(DIM),borderDash:[5,4],borderWidth:1.4},
+    ]},
+    options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+      plugins:{legend:legendCfg,shade:{bands:[["2006-05","2008-03"],["2009-10","2010-11"],["2022-05","2023-11"],["2026-02","2026-05"]]},
+        tooltip:{backgroundColor:"rgba(8,14,26,.95)",borderColor:"rgba(255,180,84,.3)",borderWidth:1,
+          callbacks:{label:c=>" "+c.dataset.label+": "+c.parsed.y?.toFixed(2)+"pp"}}},
+      scales:{x:{grid:{color:GRID},ticks:{callback:(v,i)=>{const l=labels[i];
+          return l&&l.endsWith("-01")&&+l.slice(0,4)%2===0?l.slice(0,4):null},maxRotation:0,autoSkip:false}},
+        y:{grid:{color:GRID},ticks:{callback:v=>v+"pp"},beginAtZero:true}}}
+  });
+})();
+
+// ---------- matrix table ----------
+(function(){
+  const rows=[...DATA.episodes, DATA.cuts];
+  const cell=v=>{
+    if(v==null) return "<td>—</td>";
+    const cls=v>=100?"hi":(v>=75?"mid":"lo");
+    const w=Math.min(100,Math.abs(v)/1.6);
+    const col=v>=100?"var(--magenta)":(v>=75?"var(--amber)":"var(--cyan)");
+    return `<td class="bar-cell"><span class="pct ${cls}">${v.toFixed(0)}%</span>
+      <div class="meter"><i style="width:${w}%;background:${col};box-shadow:0 0 8px ${col}"></i></div></td>`;
+  };
+  document.querySelector("#matrix tbody").innerHTML=rows.map(e=>
+    `<tr><td class="ep">${e.name}</td><td class="mono" style="color:var(--dim)">${e.delta}</td>
+     ${cell(e.fast.svr)}${cell(e.full.svr)}${cell(e.fast.saver)}${cell(e.full.saver)}${cell(e.full.bonus)}</tr>`).join("");
+})();
+</script>
+</body>
+</html>
