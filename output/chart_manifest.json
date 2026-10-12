@@ -1,0 +1,21 @@
+{
+  "latest_month_any_selected_series": "2026-09",
+  "latest_month_complete_core_series": "2026-09",
+  "latest_month_f6": "2026-08",
+  "html": [
+    "output/chart1_overlay_portrait.html",
+    "output/chart2_passthrough_portrait.html",
+    "output/chart3_wedge_portrait.html",
+    "output/chart1_overlay_widescreen.html",
+    "output/chart2_passthrough_widescreen.html",
+    "output/chart3_wedge_widescreen.html"
+  ],
+  "png": [
+    "output/chart1_overlay.png",
+    "output/chart2_passthrough.png",
+    "output/chart3_wedge.png",
+    "output/chart1_overlay_widescreen.png",
+    "output/chart2_passthrough_widescreen.png",
+    "output/chart3_wedge_widescreen.png"
+  ]
+}

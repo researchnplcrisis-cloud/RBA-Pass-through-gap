@@ -1,0 +1,203 @@
+PASS-THROUGH STATISTICS
+
+=== Episode A: 2022-23 tightening cycle ===
+First hike month: 2022-05
+Baseline month: 2022-04
+End month: 2023-11
+Total cash-rate change: 4.19 percentage points (monthly average, F1.1)
+Actual target changes in the window (F1 daily, effective date):
+  2022-05-04: 0.10% -> 0.35% (+25bp)
+  2022-06-08: 0.35% -> 0.85% (+50bp)
+  2022-07-06: 0.85% -> 1.35% (+50bp)
+  2022-08-03: 1.35% -> 1.85% (+50bp)
+  2022-09-07: 1.85% -> 2.35% (+50bp)
+  2022-10-05: 2.35% -> 2.60% (+25bp)
+  2022-11-02: 2.60% -> 2.85% (+25bp)
+  2022-12-07: 2.85% -> 3.10% (+25bp)
+  2023-02-08: 3.10% -> 3.35% (+25bp)
+  2023-03-08: 3.35% -> 3.60% (+25bp)
+  2023-05-03: 3.60% -> 3.85% (+25bp)
+  2023-06-07: 3.85% -> 4.10% (+25bp)
+  2023-11-08: 4.10% -> 4.35% (+25bp)
+
+Full-episode cumulative pass-through:
+  Standard variable mortgage (F5, advertised): 101.4%
+  Existing variable owner-occupier loans (F6, actual): 84.2%
+  New variable owner-occupier loans (F6, actual): 91.2%
+  Online saver: 56.1%
+  1-year term deposit: 102.6%
+
+Advertised wedge: standard variable minus online saver:
+  Start (2022-04): 4.32 percentage points
+  End (2023-11): 6.22 percentage points
+  Change: 1.90 percentage points
+Actual wedge: existing variable loans minus online saver:
+  Start (2022-04): 2.66 percentage points
+  End (2023-11): 3.84 percentage points
+  Change: 1.18 percentage points
+
+Individual hikes: pass-through at 1 month and 3 months
+  (monthly-average cash rate, so a mid-month decision is split across two months)
+  Hike month 2022-05; cash-rate change 0.23 pp [decision 04 May 0.10->0.35]
+    Standard variable: 1m 119.0%; 3m 102.3%
+    Existing loans: 1m 104.8%; 3m 92.4%
+    New loans: 1m 101.6%; 3m 90.6%
+    Online saver: 1m 47.6%; 3m 55.6%
+    1y term deposit: 1m 87.3%; 3m 76.0%
+  Hike month 2022-06; cash-rate change 0.40 pp [decision 08 Jun 0.35->0.85]
+    Standard variable: 1m 105.3%; 3m 104.2%
+    Existing loans: 1m 96.8%; 3m 94.3%
+    New loans: 1m 94.7%; 3m 92.2%
+    Online saver: 1m 47.4%; 3m 59.9%
+    1y term deposit: 1m 110.5%; 3m 78.1%
+  Hike month 2022-07; cash-rate change 0.55 pp [decision 06 Jul 0.85->1.35]
+    Standard variable: 1m 92.6%; 3m 94.6%
+    Existing loans: 1m 85.2%; 3m 84.9%
+    New loans: 1m 84.3%; 3m 82.7%
+    Online saver: 1m 60.2%; 3m 59.5%
+    1y term deposit: 1m 69.4%; 3m 137.8%
+  Hike month 2022-08; cash-rate change 0.53 pp [decision 03 Aug 1.35->1.85]
+    Standard variable: 1m 103.1%; 3m 96.2%
+    Existing loans: 1m 91.8%; 3m 83.3%
+    New loans: 1m 89.7%; 3m 82.7%
+    Online saver: 1m 72.2%; 3m 60.9%
+    1y term deposit: 1m 46.4%; 3m 141.0%
+  Hike month 2022-09; cash-rate change 0.44 pp [decision 07 Sep 1.85->2.35]
+    Standard variable: 1m 97.4%; 3m 100.8%
+    Existing loans: 1m 84.4%; 3m 84.7%
+    New loans: 1m 80.5%; 3m 83.1%
+    Online saver: 1m 58.4%; 3m 60.5%
+    1y term deposit: 1m 233.8%; 3m 169.4%
+  Hike month 2022-10; cash-rate change 0.33 pp [decision 05 Oct 2.35->2.60]
+    Standard variable: 1m 84.7%; 3m 88.2%
+    Existing loans: 1m 69.5%; 3m 68.2%
+    New loans: 1m 71.2%; 3m 68.2%
+    Online saver: 1m 42.4%; 3m 52.9%
+    1y term deposit: 1m 296.6%; 3m 211.8%
+  Hike month 2022-11; cash-rate change 0.26 pp [decision 02 Nov 2.60->2.85]
+    Standard variable: 1m 106.4%; 3m 105.6%
+    Existing loans: 1m 85.1%; 3m 78.9%
+    New loans: 1m 87.2%; 3m 83.1%
+    Online saver: 1m 63.8%; 3m 63.4%
+    1y term deposit: 1m 63.8%; 3m 77.5%
+  Hike month 2022-12; cash-rate change 0.21 pp [decision 07 Dec 2.85->3.10]
+    Standard variable: 1m 96.2%; 3m 107.1%
+    Existing loans: 1m 65.4%; 3m 80.0%
+    New loans: 1m 61.5%; 3m 88.6%
+    Online saver: 1m 76.9%; 3m 78.6%
+    1y term deposit: 1m 19.2%; 3m 57.1%
+  Hike month 2023-01; cash-rate change 0.05 pp [no decision this month: carry-over of previous month's decision]
+    Standard variable: 1m 104.2%; 3m 90.9%
+    Existing loans: 1m 66.7%; 3m 60.0%
+    New loans: 1m 75.0%; 3m 76.4%
+    Online saver: 1m 62.5%; 3m 63.6%
+    1y term deposit: 1m 104.2%; 3m 72.7%
+  Hike month 2023-02; cash-rate change 0.19 pp [decision 08 Feb 3.10->3.35]
+    Standard variable: 1m 113.6%; 3m 102.7%
+    Existing loans: 1m 88.6%; 3m 78.1%
+    New loans: 1m 104.5%; 3m 95.9%
+    Online saver: 1m 79.5%; 3m 61.6%
+    1y term deposit: 1m 79.5%; 3m 54.8%
+  Hike month 2023-03; cash-rate change 0.25 pp [decision 08 Mar 3.35->3.60]
+    Standard variable: 1m 80.6%; 3m 98.7%
+    Existing loans: 1m 54.8%; 3m 77.6%
+    New loans: 1m 77.4%; 3m 101.3%
+    Online saver: 1m 64.5%; 3m 59.2%
+    1y term deposit: 1m 48.4%; 3m 52.6%
+  Hike month 2023-04; cash-rate change 0.06 pp [no decision this month: carry-over of previous month's decision]
+    Standard variable: 1m 86.2%; 3m 89.3%
+    Existing loans: 1m 62.1%; 3m 67.9%
+    New loans: 1m 82.8%; 3m 94.6%
+    Online saver: 1m 34.5%; 3m 44.6%
+    1y term deposit: 1m 17.2%; 3m 80.4%
+  Hike month 2023-05; cash-rate change 0.23 pp [decision 03 May 3.60->3.85]
+    Standard variable: 1m 111.1%; 3m 100.0%
+    Existing loans: 1m 93.3%; 3m 76.0%
+    New loans: 1m 117.8%; 3m 116.0%
+    Online saver: 1m 55.6%; 3m 50.0%
+    1y term deposit: 1m 55.6%; 3m 90.0%
+  Hike month 2023-06; cash-rate change 0.22 pp [decision 07 Jun 3.85->4.10]
+    Standard variable: 1m 92.6%; 3m 92.6%
+    Existing loans: 1m 74.1%; 3m 55.6%
+    New loans: 1m 107.4%; 3m 125.9%
+    Online saver: 1m 55.6%; 3m 55.6%
+    1y term deposit: 1m 148.1%; 3m 148.1%
+  Hike month 2023-07; cash-rate change 0.05 pp [no decision this month: carry-over of previous month's decision]
+    Standard variable: 1m 0.0%; 3m 0.0%
+    Existing loans: 1m -80.0%; 3m -140.0%
+    New loans: 1m 100.0%; 3m 120.0%
+    Online saver: 1m 0.0%; 3m 0.0%
+    1y term deposit: 1m 400.0%; 3m 300.0%
+  Hike month 2023-11; cash-rate change 0.19 pp [decision 08 Nov 4.10->4.35]
+    Standard variable: 1m 100.0%; 3m 100.0%
+    Existing loans: 1m 88.0%; 3m 76.0%
+    New loans: 1m 96.0%; 3m 108.0%
+    Online saver: 1m 20.0%; 3m -60.0%
+    1y term deposit: 1m 40.0%; 3m 0.0%
+
+=== Episode B: 2026 tightening cycle to date ===
+First hike month: 2026-02
+Baseline month: 2026-01
+End month: 2026-09
+Total cash-rate change: 0.76 percentage points (monthly average, F1.1)
+Actual target changes in the window (F1 daily, effective date):
+  2026-02-04: 3.60% -> 3.85% (+25bp)
+  2026-03-18: 3.85% -> 4.10% (+25bp)
+  2026-05-06: 4.10% -> 4.35% (+25bp)
+  2026-09-30: 4.35% -> 4.60% (+25bp)
+  NOTE: the 30 Sep 2026 change takes effect at month end, so it is almost absent from the Sep 2026 monthly average and from that month's retail-rate observations.
+
+Full-episode cumulative pass-through:
+  Standard variable mortgage (F5, advertised): 98.7%
+  Existing variable owner-occupier loans (F6, actual): 97.3%  [to 2026-08; cash-rate change 0.75 pp]
+  New variable owner-occupier loans (F6, actual): 96.0%  [to 2026-08; cash-rate change 0.75 pp]
+  Online saver: 105.3%
+  1-year term deposit: 144.7%
+
+Advertised wedge: standard variable minus online saver:
+  Start (2026-01): 5.72 percentage points
+  End (2026-09): 5.67 percentage points
+  Change: -0.05 percentage points
+Actual wedge: existing variable loans minus online saver:
+  Start (2026-01): 3.21 percentage points
+  End (2026-08): 3.14 percentage points
+  Change: -0.07 percentage points
+
+Individual hikes: pass-through at 1 month and 3 months
+  (monthly-average cash rate, so a mid-month decision is split across two months)
+  Hike month 2026-02; cash-rate change 0.23 pp [decision 04 Feb 3.60->3.85]
+    Standard variable: 1m 138.9%; 3m 105.6%
+    Existing loans: 1m 122.2%; 3m 102.8%
+    New loans: 1m 116.7%; 3m 102.8%
+    Online saver: 1m 111.1%; 3m 105.6%
+    1y term deposit: 1m 166.7%; 3m 162.0%
+  Hike month 2026-03; cash-rate change 0.13 pp [decision 18 Mar 3.85->4.10]
+    Standard variable: 1m 92.6%; 3m 96.2%
+    Existing loans: 1m 92.6%; 3m 96.2%
+    New loans: 1m 96.3%; 3m 100.0%
+    Online saver: 1m 74.1%; 3m 115.4%
+    1y term deposit: 1m 388.9%; 3m 211.5%
+  Hike month 2026-04; cash-rate change 0.14 pp [no decision this month: carry-over of previous month's decision]
+    Standard variable: 1m 71.4%; 3m 64.1%
+    Existing loans: 1m 82.9%; 3m 74.4%
+    New loans: 1m 88.6%; 3m 79.5%
+    Online saver: 1m 100.0%; 3m 102.6%
+    1y term deposit: 1m 157.1%; 3m 128.2%
+  Hike month 2026-05; cash-rate change 0.21 pp [decision 06 May 4.10->4.35]
+    Standard variable: 1m 100.0%; 3m 100.0%
+    Existing loans: 1m 100.0%; 3m 96.0%
+    New loans: 1m 104.0%; 3m 96.0%
+    Online saver: 1m 160.0%; 3m 160.0%
+    1y term deposit: 1m 20.0%; 3m -20.0%
+  Hike month 2026-06; cash-rate change 0.04 pp [no decision this month: carry-over of previous month's decision]
+    Standard variable: 1m 0.0%; 3m 0.0%
+    Existing loans: 1m 0.0%; 3m n/a
+    New loans: 1m 0.0%; 3m n/a
+    Online saver: 1m 125.0%; 3m 100.0%
+    1y term deposit: 1m -125.0%; 3m -100.0%
+  Hike month 2026-09; cash-rate change 0.01 pp [decision 30 Sep 4.35->4.60]
+    Standard variable: 1m n/a; 3m n/a
+    Existing loans: 1m n/a; 3m n/a
+    New loans: 1m n/a; 3m n/a
+    Online saver: 1m n/a; 3m n/a
+    1y term deposit: 1m n/a; 3m n/a

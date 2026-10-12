@@ -1,0 +1,20 @@
+RBA Statistical Tables - downloaded 2026-10-12 from https://www.rba.gov.au/statistics/tables/xls/<file>
+
+f01hist.xlsx  F1.1 Interest Rates and Yields - Money Market   latest obs: Sep 2026
+              FIRMMCRT       Cash Rate Target; monthly average                      (Sep-26: 4.36)
+f05hist.xlsx  F5 Indicator Lending Rates                      latest obs: Sep 2026
+              FILRHLBVS      Housing loans; Banks; Variable; Standard; Owner-occ.   (Sep-26: 8.77)
+              FILRHLBVD      Housing loans; Banks; Variable; Discounted; Owner-occ. (Sep-26: 6.80)
+f04hist.xlsx  F4 Retail Deposit and Investment Rates          latest obs: Sep 2026
+              FRDIRSAO10K    Online savings accounts; $10,000                       (Sep-26: 3.10)
+              FRDIRBTD10K1Y  Banks' term deposits ($10,000); 1 year                 (Sep-26: 5.00)
+f06hist.xlsx  F6 Housing Lending Rates (NEW - not used in previous build)  latest obs: Aug 2026
+              Actual average rates paid on outstanding and new owner-occupier/investor loans,
+              e.g. FLRHOOVA (outstanding OO variable, all institutions), FLRHOFVA (new OO variable),
+              FLRHOFFA/FLRHOFFB (new OO fixed). Coverage Jul 2019 onward.
+
+f01d.xlsx     F1 Interest Rates and Yields - Money Market - DAILY (added 2026-10-12)  latest obs: 9 Oct 2026
+              FIRMMCRTD      Cash Rate Target on date. Used to date actual RBA decisions:
+                             target raised 4.35 -> 4.60 effective 30 Sep 2026 (only +0.01 in the Sep monthly average).
+
+Previous build (pass-through-gap) used F1.1, F4, F5 with data to May 2026.

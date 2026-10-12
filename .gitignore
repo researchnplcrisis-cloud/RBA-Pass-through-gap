@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+work/build_log.txt
+work/dashboard/index_doc.json
+~$*
+work/dashboard/
+output/dashboard_artifact.html

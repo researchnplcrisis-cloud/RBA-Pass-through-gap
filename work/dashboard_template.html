@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Pass-Through Gap</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#05070d; --panel:rgba(13,20,36,.72); --panel-brd:rgba(0,229,255,.16);
+  --cyan:#00e5ff; --magenta:#ff2d78; --amber:#ffb454; --lime:#7dff6a; --violet:#b48cff;
+  --ink:#dfe9f5; --dim:#6d7f99; --grid:rgba(120,160,220,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink); font-family:'Rajdhani',sans-serif;
+  min-height:100vh; overflow-x:hidden; position:relative;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(0,229,255,.07), transparent 60%),
+    radial-gradient(900px 500px at 0% 110%, rgba(255,45,120,.06), transparent 60%),
+    repeating-linear-gradient(0deg, transparent 0 2px, rgba(255,255,255,.006) 2px 4px);
+}
+.wrap{max-width:1440px;margin:0 auto;padding:28px 32px 48px;position:relative;z-index:1}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;
+  border-bottom:1px solid var(--panel-brd);padding-bottom:18px;margin-bottom:24px}
+.brand h1{font-family:'Orbitron',sans-serif;font-weight:900;font-size:30px;letter-spacing:3px;
+  background:linear-gradient(90deg,var(--cyan),#7ae7ff 45%,var(--magenta));
+  -webkit-background-clip:text;background-clip:text;color:transparent;text-transform:uppercase}
+.brand .sub{color:var(--dim);font-size:15px;letter-spacing:2.5px;text-transform:uppercase;margin-top:4px}
+.status{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.pulse{display:flex;align-items:center;gap:8px;font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--lime)}
+.pulse .dot{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime);animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.25}}
+.countdown{text-align:right}
+.countdown .lbl{color:var(--dim);font-size:12px;letter-spacing:2px;text-transform:uppercase}
+.countdown .val{font-family:'Orbitron',sans-serif;font-size:26px;font-weight:700;color:var(--amber);text-shadow:0 0 18px rgba(255,180,84,.45)}
+.alert{display:flex;gap:12px;align-items:flex-start;background:rgba(255,180,84,.06);border:1px solid rgba(255,180,84,.35);
+  border-radius:12px;padding:12px 16px;margin-bottom:18px;font-size:15px;line-height:1.45}
+.alert .tagx{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--amber);letter-spacing:1.5px;white-space:nowrap;
+  border:1px solid rgba(255,180,84,.45);border-radius:20px;padding:2px 10px;margin-top:1px}
+.alert b{color:var(--amber)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:14px;margin-bottom:22px}
+.kpi{min-width:0;background:var(--panel);border:1px solid var(--panel-brd);border-radius:12px;padding:16px 18px;position:relative;overflow:hidden;
+  backdrop-filter:blur(6px);transition:transform .2s, box-shadow .2s}
+.kpi:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,229,255,.12)}
+.kpi::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent,var(--cyan));
+  box-shadow:0 0 12px var(--accent,var(--cyan))}
+.kpi .lbl{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.kpi .val{font-family:'Orbitron',sans-serif;font-size:30px;font-weight:700;color:var(--accent,var(--cyan));
+  text-shadow:0 0 20px color-mix(in srgb, var(--accent,var(--cyan)) 40%, transparent)}
+.kpi .note{font-size:13px;color:var(--dim);margin-top:4px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.card{background:var(--panel);border:1px solid var(--panel-brd);border-radius:14px;padding:20px 22px 16px;backdrop-filter:blur(6px);position:relative;min-width:0}
+.card.full{grid-column:1/-1}
+.card h2{font-family:'Orbitron',sans-serif;font-size:15px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink);padding-right:150px}
+.card .desc{color:var(--dim);font-size:14px;margin:4px 0 12px}
+.card .tag{position:absolute;top:20px;right:22px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--cyan);
+  border:1px solid rgba(0,229,255,.3);padding:3px 10px;border-radius:20px;letter-spacing:1px}
+.chart-box{position:relative;height:360px}
+.chart-box.tall{height:420px}
+.toggle{display:inline-flex;border:1px solid var(--panel-brd);border-radius:8px;overflow:hidden;margin-bottom:12px;flex-wrap:wrap}
+.toggle button{background:transparent;border:0;color:var(--dim);font-family:'Rajdhani',sans-serif;font-weight:600;
+  font-size:14px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 18px;cursor:pointer;transition:.2s}
+.toggle button.on{background:rgba(0,229,255,.12);color:var(--cyan);text-shadow:0 0 10px rgba(0,229,255,.5)}
+.toggle button:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:760px}
+th{font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:1px;color:var(--dim);text-transform:uppercase;
+  text-align:right;padding:10px 12px;border-bottom:1px solid var(--panel-brd)}
+th:first-child,td:first-child{text-align:left}
+th.grp{text-align:center;color:var(--ink);border-bottom:0;padding-bottom:0}
+td{padding:10px 12px;text-align:right;border-bottom:1px solid rgba(120,160,220,.06);font-weight:600}
+td.ep{font-family:'Orbitron',sans-serif;font-size:13px;letter-spacing:1px;color:var(--ink)}
+.bar-cell{position:relative}
+.pct{display:inline-block;min-width:52px}
+.hi{color:var(--magenta)} .lo{color:var(--cyan)} .mid{color:var(--amber)}
+.meter{height:4px;border-radius:2px;margin-top:4px;background:rgba(255,255,255,.05);overflow:hidden}
+.meter i{display:block;height:100%;border-radius:2px}
+footer{margin-top:26px;color:var(--dim);font-size:13px;line-height:1.6;border-top:1px solid var(--panel-brd);padding-top:14px}
+footer b{color:var(--ink)}
+.mono{font-family:'Share Tech Mono',monospace}
+@media(max-width:980px){.grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){
+  .wrap{padding:20px 16px 40px}
+  .brand h1{font-size:21px;letter-spacing:2px}
+  .countdown{text-align:left}
+  .kpis{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+  .kpi{padding:12px}
+  .kpi .val{font-size:22px}
+  .kpi .lbl{letter-spacing:1px}
+  header{min-width:0}
+  .card{padding:16px 14px 12px}
+  .card h2{padding-right:0}
+  .card .tag{position:static;display:inline-block;margin-top:6px}
+  .chart-box,.chart-box.tall{height:300px}
+}
+@media(prefers-reduced-motion:reduce){.pulse .dot{animation:none}.kpi{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand">
+    <h1>The Pass-Through Gap</h1>
+    <div class="sub">RBA Rate Transmission Monitor · Mortgage vs Savings</div>
+  </div>
+  <div class="status">
+    <div class="pulse"><span class="dot"></span><span id="live-lbl">DATA LIVE · RBA F1 F4 F5 F6</span></div>
+    <div class="countdown">
+      <div class="lbl" id="next-lbl">RBA Decision</div>
+      <div class="val" id="countdown">—</div>
+    </div>
+  </div>
+</header>
+
+<div class="alert" id="alert"><span class="tagx">NEW HIKE</span><span id="alert-txt"></span></div>
+
+<div class="kpis" id="kpis"></div>
+
+<div class="grid">
+  <div class="card full">
+    <h2>Transmission Overlay <span style="color:var(--dim)">/ 2021 → now</span></h2>
+    <div class="desc">The advertised mortgage rate hugs the cash rate; what borrowers actually pay (violet) sits well below it; the savings line trails. Shaded: hiking cycles.</div>
+    <span class="tag" id="tag-updated"></span>
+    <div class="chart-box tall"><canvas id="c-overlay"></canvas></div>
+  </div>
+
+  <div class="card">
+    <h2>Pass-Through Scorecard</h2>
+    <div class="desc">Cumulative pass-through of cash rate moves (100 = full). Actual-rate data (F6) starts in 2019.</div>
+    <div class="toggle">
+      <button id="btn-fast" class="on">⚡ 3m after first hike</button>
+      <button id="btn-full">◉ 3m after final hike</button>
+    </div>
+    <div class="chart-box"><canvas id="c-bars"></canvas></div>
+  </div>
+
+  <div class="card">
+    <h2>The Wedge <span style="color:var(--dim)">/ 2004 → now</span></h2>
+    <div class="desc">Mortgage rate minus online saver rate — the margin between both sides of the household balance sheet.</div>
+    <div class="chart-box"><canvas id="c-wedge"></canvas></div>
+  </div>
+
+  <div class="card full">
+    <h2>Episode Matrix</h2>
+    <div class="desc">Every cycle since 2006 — including the 2025 cuts. Pass-through %, advertised and actual mortgage rates vs deposits.</div>
+    <div class="table-wrap">
+    <table id="matrix">
+      <thead>
+      <tr><th></th><th></th><th class="grp" colspan="2">Std variable (advertised)</th><th class="grp" colspan="2">Existing loans (actual)</th><th class="grp" colspan="2">Online saver</th><th class="grp">Bonus saver</th></tr>
+      <tr>
+        <th>Episode</th><th>Cash Δ</th>
+        <th>⚡fast</th><th>◉full</th>
+        <th>⚡fast</th><th>◉full</th>
+        <th>⚡fast</th><th>◉full</th>
+        <th>◉full</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<footer id="footer"></footer>
+</div>
+
+<script>
+/*__DATA__*/
+
+const CY="#00e5ff", MG="#ff2d78", AM="#ffb454", LM="#7dff6a", VI="#b48cff", DIM="#6d7f99", GRID="rgba(120,160,220,.08)";
+Chart.defaults.font.family="'Rajdhani',sans-serif";
+Chart.defaults.font.size=13;
+Chart.defaults.color=DIM;
+
+// ---------- countdown ----------
+(function(){
+  const target=new Date(DATA.next.at), now=new Date();
+  const d=Math.ceil((target-now)/86400000);
+  document.getElementById("next-lbl").textContent="RBA Decision · "+DATA.next.label;
+  document.getElementById("countdown").textContent=d>0?"T-"+d+" DAYS":(d===0?"TODAY":"DECIDED");
+})();
+document.getElementById("tag-updated").textContent="DATA → "+DATA.dataTo.toUpperCase()+" · F6 → "+DATA.f6To.toUpperCase();
+
+// ---------- KPIs ----------
+const k=DATA.kpi;
+document.getElementById("alert-txt").innerHTML=
+  `The RBA lifted the cash rate target to <b>${k.cash.toFixed(2)}%</b> on ${k.cashFrom}. Retail-rate data published so far predates it, so 2026 pass-through below is measured to ${DATA.capTo}.`;
+const kpis=[
+  {lbl:"Cash rate target",val:k.cash.toFixed(2)+"%",note:`after ${k.hikes26} hikes in 2026 · latest ${k.cashFrom}`,acc:LM},
+  {lbl:"Std variable mortgage",val:k.svr.toFixed(2)+"%",note:"advertised · discounted: "+k.disc.toFixed(2)+"%",acc:MG},
+  {lbl:"Existing loans · actual",val:k.exist.toFixed(2)+"%",note:`new loans: ${k.newl.toFixed(2)}% · ${DATA.f6To}`,acc:VI},
+  {lbl:"Online saver",val:k.saver.toFixed(2)+"%",note:"bonus saver: "+k.bonus.toFixed(2)+"%",acc:CY},
+  {lbl:"The wedge",val:k.wedge.toFixed(2)+"pp",note:`peak this cycle: ${k.wedgePeak.toFixed(2)}pp · actual: ${k.wedgeActual.toFixed(2)}pp`,acc:AM},
+  {lbl:"2022–23 asymmetry",val:`${Math.round(k.asym[0])} / ${Math.round(k.asym[2])}`,note:`mortgage vs saver pass-through % · actual loans: ${Math.round(k.asym[1])}`,acc:MG},
+];
+document.getElementById("kpis").innerHTML=kpis.map(x=>
+  `<div class="kpi" style="--accent:${x.acc}"><div class="lbl">${x.lbl}</div><div class="val">${x.val}</div><div class="note">${x.note}</div></div>`).join("");
+
+// ---------- helpers ----------
+function glow(color){return {borderColor:color, pointRadius:0, borderWidth:2.4, tension:.25,
+  shadowColor:color, spanGaps:false}}
+const shadePlugin={id:"shade",beforeDraw(chart,args,opts){
+  if(!opts.bands) return;
+  const {ctx,chartArea,scales}=chart, x=scales.x;
+  ctx.save();
+  opts.bands.forEach(([a,b])=>{
+    const ia=chart.data.labels.indexOf(a), ib=chart.data.labels.indexOf(b);
+    if(ia<0) return;
+    const x1=x.getPixelForValue(ia), x2=x.getPixelForValue(ib<0?chart.data.labels.length-1:ib);
+    const g=ctx.createLinearGradient(x1,0,x2,0);
+    g.addColorStop(0,"rgba(255,45,120,.05)");g.addColorStop(.5,"rgba(255,180,84,.08)");g.addColorStop(1,"rgba(255,45,120,.05)");
+    ctx.fillStyle=g; ctx.fillRect(x1,chartArea.top,x2-x1,chartArea.bottom-chartArea.top);
+  });
+  ctx.restore();
+}};
+Chart.register(shadePlugin);
+const hikeBands=DATA.episodes.map(e=>e.bands);
+
+function yearTicks(labels){return {callback:(v,i)=>{const l=labels[i];return l&&l.endsWith("-01")?l.slice(0,4):null},
+  maxRotation:0,autoSkip:false,color:DIM}}
+
+const legendCfg={labels:{usePointStyle:true,pointStyle:"line",boxWidth:30,color:"#aebdd2",font:{size:13,weight:"600"}}};
+const tipCfg=(brd)=>({backgroundColor:"rgba(8,14,26,.95)",borderColor:brd,borderWidth:1,titleFont:{family:"'Share Tech Mono',monospace"}});
+
+// ---------- overlay ----------
+(function(){
+  const d=DATA.overlay, labels=d.map(r=>r.d);
+  new Chart(document.getElementById("c-overlay"),{
+    type:"line",
+    data:{labels,datasets:[
+      {label:"Cash rate target",data:d.map(r=>r.cash),...glow(LM),borderWidth:3,stepped:"before",tension:0},
+      {label:"Std variable mortgage",data:d.map(r=>r.svr),...glow(MG)},
+      {label:"Discounted variable",data:d.map(r=>r.disc),...glow(MG),borderDash:[6,4],borderWidth:1.6},
+      {label:"Existing loans (actual)",data:d.map(r=>r.exist),...glow(VI),borderWidth:2.6},
+      {label:"New loans (actual)",data:d.map(r=>r.newl),...glow(VI),borderDash:[3,3],borderWidth:1.6},
+      {label:"Online saver",data:d.map(r=>r.saver),...glow(CY)},
+    ]},
+    options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+      plugins:{legend:legendCfg,shade:{bands:hikeBands},
+        tooltip:{...tipCfg("rgba(0,229,255,.3)"),callbacks:{label:c=>c.parsed.y==null?null:" "+c.dataset.label+": "+c.parsed.y.toFixed(2)+"%"}}},
+      scales:{x:{grid:{color:GRID},ticks:yearTicks(labels)},
+        y:{grid:{color:GRID},ticks:{callback:v=>v+"%"},suggestedMax:9.5,beginAtZero:true}}}
+  });
+})();
+
+// ---------- pass-through bars ----------
+let barsChart, mode="fast";
+function drawBars(){
+  const eps=DATA.episodes, get=(e,s)=>e[mode][s];
+  const cfg={
+    type:"bar",
+    data:{labels:eps.map(e=>e.name),datasets:[
+      {label:"Std variable (advertised)",data:eps.map(e=>get(e,"svr")),backgroundColor:"rgba(255,45,120,.75)",borderColor:MG,borderWidth:1.5,borderRadius:5},
+      {label:"Existing loans (actual)",data:eps.map(e=>get(e,"exist")),backgroundColor:"rgba(180,140,255,.7)",borderColor:VI,borderWidth:1.5,borderRadius:5},
+      {label:"Online saver",data:eps.map(e=>get(e,"saver")),backgroundColor:"rgba(0,229,255,.65)",borderColor:CY,borderWidth:1.5,borderRadius:5},
+      {label:"Bonus saver",data:eps.map(e=>get(e,"bonus")),backgroundColor:"rgba(255,180,84,.55)",borderColor:AM,borderWidth:1.5,borderRadius:5},
+    ]},
+    options:{maintainAspectRatio:false,
+      plugins:{legend:legendCfg,
+        tooltip:{...tipCfg("rgba(0,229,255,.3)"),
+          callbacks:{label:c=>c.parsed.y==null?" "+c.dataset.label+": no data":" "+c.dataset.label+": "+c.parsed.y+"% of cash move"}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:13,weight:"600"},color:"#aebdd2"}},
+        y:{grid:{color:GRID},suggestedMax:170,ticks:{callback:v=>v+"%"},
+           title:{display:true,text:"pass-through of cash rate change",color:DIM}}}}
+  };
+  const hundred={id:"hundred",afterDraw(c){
+    const y=c.scales.y.getPixelForValue(100),{left,right}=c.chartArea,ctx=c.ctx;
+    ctx.save();ctx.strokeStyle="rgba(125,255,106,.5)";ctx.setLineDash([5,5]);ctx.lineWidth=1.2;
+    ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(right,y);ctx.stroke();
+    ctx.fillStyle="rgba(125,255,106,.8)";ctx.font="11px 'Share Tech Mono'";
+    ctx.fillText("FULL PASS-THROUGH",left+6,y-6);ctx.restore();}};
+  if(barsChart) barsChart.destroy();
+  barsChart=new Chart(document.getElementById("c-bars"),{...cfg,plugins:[hundred]});
+}
+drawBars();
+const bf=document.getElementById("btn-fast"), bl=document.getElementById("btn-full");
+bf.onclick=()=>{mode="fast";bf.classList.add("on");bl.classList.remove("on");drawBars();};
+bl.onclick=()=>{mode="full";bl.classList.add("on");bf.classList.remove("on");drawBars();};
+
+// ---------- wedge ----------
+(function(){
+  const d=DATA.wedge, labels=d.map(r=>r.d);
+  new Chart(document.getElementById("c-wedge"),{
+    type:"line",
+    data:{labels,datasets:[
+      {label:"Discounted mortgage − online saver",data:d.map(r=>r.w1),...glow(AM),
+       fill:true,backgroundColor:(ctx)=>{const g=ctx.chart.ctx.createLinearGradient(0,0,0,360);
+         g.addColorStop(0,"rgba(255,180,84,.28)");g.addColorStop(1,"rgba(255,180,84,.01)");return g}},
+      {label:"Std variable − online saver",data:d.map(r=>r.w2),...glow(DIM),borderDash:[5,4],borderWidth:1.4},
+      {label:"Existing loans (actual) − online saver",data:d.map(r=>r.w3),...glow(VI),borderWidth:2.2},
+    ]},
+    options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+      plugins:{legend:legendCfg,shade:{bands:hikeBands},
+        tooltip:{...tipCfg("rgba(255,180,84,.3)"),
+          callbacks:{label:c=>c.parsed.y==null?null:" "+c.dataset.label+": "+c.parsed.y.toFixed(2)+"pp"}}},
+      scales:{x:{grid:{color:GRID},ticks:{callback:(v,i)=>{const l=labels[i];
+          return l&&l.endsWith("-01")&&+l.slice(0,4)%2===0?l.slice(0,4):null},maxRotation:0,autoSkip:false}},
+        y:{grid:{color:GRID},ticks:{callback:v=>v+"pp"},beginAtZero:true}}}
+  });
+})();
+
+// ---------- matrix table ----------
+(function(){
+  const rows=[...DATA.episodes, DATA.cuts];
+  const cell=v=>{
+    if(v==null) return "<td style='color:var(--dim)'>—</td>";
+    const cls=v>=100?"hi":(v>=75?"mid":"lo");
+    const w=Math.min(100,Math.abs(v)/1.6);
+    const col=v>=100?"var(--magenta)":(v>=75?"var(--amber)":"var(--cyan)");
+    return `<td class="bar-cell"><span class="pct ${cls}">${v.toFixed(0)}%</span>
+      <div class="meter"><i style="width:${w}%;background:${col};box-shadow:0 0 8px ${col}"></i></div></td>`;
+  };
+  document.querySelector("#matrix tbody").innerHTML=rows.map(e=>
+    `<tr><td class="ep">${e.name}</td><td class="mono" style="color:var(--dim)">${e.delta}</td>
+     ${cell(e.fast.svr)}${cell(e.full.svr)}${cell(e.fast.exist)}${cell(e.full.exist)}${cell(e.fast.saver)}${cell(e.full.saver)}${cell(e.full.bonus)}</tr>`).join("");
+})();
+
+// ---------- footer ----------
+document.getElementById("footer").innerHTML=
+  `<b>Method.</b> Pass-through = Δ retail rate ÷ Δ cash rate target (month-end), from the month before each episode's first hike; "fast" at +3 months from first hike, "full" at +3 months from final hike (2026: at ${DATA.capTo}, the latest month before the ${k.cashFrom} hike reached any retail data). `+
+  `<b>Sources.</b> RBA Statistical Tables <span class="mono">F1</span> (daily cash rate target), <span class="mono">F1.1</span>, <span class="mono">F5</span> (indicator lending rates: standard &amp; discounted variable, owner-occupier), <span class="mono">F6</span> (average rates actually charged on existing and new owner-occupier variable loans, all institutions; from Jul 2019), <span class="mono">F4</span> (retail deposit rates: online &amp; bonus savers, $10k). `+
+  `F4/F5 are advertised rates from a sample of institutions; system-wide behaviour, no individual bank described. Author's calculations (Irine) · retail data to ${DATA.dataTo}, F6 to ${DATA.f6To} · built ${DATA.updated}.`;
+</script>
+</body>
+</html>

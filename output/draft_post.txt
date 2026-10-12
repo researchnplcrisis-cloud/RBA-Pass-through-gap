@@ -1,0 +1,17 @@
+With the RBA's next decision due on 3 November, it's worth asking again: when the cash rate moves, who feels it first? The cash-rate target has gone from 3.60% to 4.60% in 4 moves since February. The latest rise, to 4.60% on 30 September, came after the most recent retail-rate data, so the numbers below cover the moves before it.
+
+Chart 1: the advertised standard variable rate is 8.77% (Sep 2026), but the average existing variable borrower actually pays 6.24% and new variable borrowers 6.23% (Aug 2026). Online savers earn 3.10%.
+
+Chart 2: share of the 2022-23 hikes that reached each rate: advertised variable 101.4%, existing loans 84.2%, new loans 91.2%, online savers 56.1%, 1-year term deposits 102.6%. For 2026 to Sep 2026 (actual-rate figures to Aug 2026): advertised variable 98.7%, existing loans 97.3%, new loans 96.0%, online savers 105.3%, 1-year term deposits 144.7%.
+
+Chart 3: the advertised wedge (standard variable minus online saver) went from 4.32pp before the 2022 hikes to 6.22pp by late 2023, and is 5.67pp now. Using what existing borrowers actually pay, the wedge went from 2.66pp to 3.84pp, and is 3.14pp now.
+
+The advertised rate is the headline, but it is not what most borrowers pay. Looking at actual loan rates changes both the level of the borrower-saver wedge and how it has moved through the cycle.
+
+This is exactly the kind of interest rate pass-through question where product design, bank pricing, and household balance sheets meet.
+
+Curious how others read the borrower-saver split in this cycle.
+
+Data: RBA Statistical Tables F1, F1.1, F4, F5, F6 (public). Full methodology in comments.
+
+#RBA #InterestRates #Mortgages #Banking #AustralianEconomy

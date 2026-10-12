@@ -1,0 +1,332 @@
+
+=== F1.1 raw rows 0-12 ===
+0: ['F1.1 INTEREST RATES AND YIELDS – MONEY MARKET', '', '', '', '', '', '', '']
+1: ['Title', 'Cash Rate Target', 'Interbank Overnight Cash Rate', 'Highest Interbank Overnight Cash Rate', 'Lowest Interbank Overnight Cash Rate', 'Volume of Cash Market Transactions', 'Number of Cash Market Transactions', '1-month BABs/NCDs', '3-month BABs/NCDs', '6-month BABs/NCDs', '1-month OIS', '3-month OIS', '6-month OIS', '1-month Treasury Note', '3- month Treasury Note', '6- month Treasury Note']
+2: ['Description', 'Cash Rate Target; monthly average', 'Interbank Overnight Cash Rate; monthly average', 'Highest Interbank Overnight Cash Rate; monthly average', 'Lowest Interbank Overnight Cash Rate; monthly average', 'Volume of Interbank Overnight Cash Market Transactions; monthly sum', 'Number of Interbank Overnight Cash Market Transactions; monthly sum', 'Bank Accepted Bills/Negotiable Certificates of Deposit-1 month; monthly average', 'Bank Accepted Bills/Negotiable Certificates of Deposit-3 months; monthly average', 'Bank Accepted Bills/Negotiable Certificates of Deposit- 6 months; monthly average', 'Overnight Indexed Swaps-1 month; monthly average', 'Overnight Indexed Swaps-3 months; monthly average', 'Overnight Indexed Swaps-6 months; monthly average', 'Treasury Notes-1 month; monthly average', 'Treasury Notes-3 months; monthly average', 'Treasury Notes-6 months; monthly average']
+3: ['Frequency', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'See notes', 'See notes', 'See notes']
+4: ['Type', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original']
+5: ['Units', 'Per cent', 'Per cent', 'Per cent', 'Per cent', '$m', 'Number ', 'Per cent', 'Per cent', 'Per cent', 'Per cent', 'Per cent', 'Per cent', 'Per cent', 'Per cent', 'Per cent']
+6: ['', '', '', '', '', '', '']
+7: ['', '', '', '', '', '', '']
+8: ['Source', 'RBA', 'RBA', 'RBA', 'RBA', 'RBA', 'RBA', 'ASX', 'ASX', 'ASX', 'FENICS', 'FENICS', 'FENICS', 'RBA', 'RBA', 'RBA']
+9: ['Publication date', '01-Oct-2026', '01-Oct-2026', '01-Oct-2026', '01-Oct-2026', '01-Oct-2026', '01-Oct-2026', '01-Oct-2026', '01-Oct-2026', '01-Oct-2026', '01-Oct-2026', '01-Oct-2026', '01-Oct-2026', '01-Oct-2026', '01-Oct-2026', '01-Oct-2026']
+10: ['Series ID', 'FIRMMCRT', 'FIRMMCRI', 'FIRMMCRIHM', 'FIRMMCRILM', 'FIRMMCRIVM', 'FIRMMCRINM', 'FIRMMBAB30', 'FIRMMBAB90', 'FIRMMBAB180', 'FIRMMOIS1', 'FIRMMOIS3', 'FIRMMOIS6', 'FIRMMTN1', 'FIRMMTN3', 'FIRMMTN6']
+11: ['25384', '', '', '', '', '', '', '', '5.9', '', '', '', '', '', '', '', '', '', '', '', '']
+12: ['25415', '', '', '', '', '', '', '', '5.8', '', '', '', '', '', '', '', '', '', '', '', '']
+
+=== F1.1 column descriptions ===
+col 1: Cash Rate Target; monthly average | series_id=FIRMMCRT
+col 2: Interbank Overnight Cash Rate; monthly average | series_id=FIRMMCRI
+col 3: Highest Interbank Overnight Cash Rate; monthly average | series_id=FIRMMCRIHM
+col 4: Lowest Interbank Overnight Cash Rate; monthly average | series_id=FIRMMCRILM
+col 5: Volume of Interbank Overnight Cash Market Transactions; monthly sum | series_id=FIRMMCRIVM
+col 6: Number of Interbank Overnight Cash Market Transactions; monthly sum | series_id=FIRMMCRINM
+col 7: Bank Accepted Bills/Negotiable Certificates of Deposit-1 month; monthly average | series_id=FIRMMBAB30
+col 8: Bank Accepted Bills/Negotiable Certificates of Deposit-3 months; monthly average | series_id=FIRMMBAB90
+col 9: Bank Accepted Bills/Negotiable Certificates of Deposit- 6 months; monthly average | series_id=FIRMMBAB180
+col 10: Overnight Indexed Swaps-1 month; monthly average | series_id=FIRMMOIS1
+col 11: Overnight Indexed Swaps-3 months; monthly average | series_id=FIRMMOIS3
+col 12: Overnight Indexed Swaps-6 months; monthly average | series_id=FIRMMOIS6
+col 13: Treasury Notes-1 month; monthly average | series_id=FIRMMTN1
+col 14: Treasury Notes-3 months; monthly average | series_id=FIRMMTN3
+col 15: Treasury Notes-6 months; monthly average | series_id=FIRMMTN6
+
+=== F5 raw rows 0-12 ===
+0: ['F5  INDICATOR LENDING RATES', '']
+1: ['Title', 'Lending rates; Small business; Variable; Term', 'Lending rates; Small business; Variable; Overdraft', 'Lending rates; Housing loans; Banks; Variable; Standard; Owner-occupier', 'Lending rates; Housing loans; Banks; Variable; Discounted; Owner-occupier', 'Lending rates; Housing loans; Banks; Variable; Standard interest-only; Owner-occupier', 'Lending rates; Housing loans; Banks; 3-year fixed; Owner-occupier', 'Lending rates; Housing loans; Banks; Variable; Standard; Investor', 'Lending rates; Housing loans; Banks; Variable; Discounted; Investor', 'Lending rates; Housing loans; Banks; Variable; Standard interest-only; Investor', 'Lending rates; Housing loans; Banks; 3-year fixed; Investor', 'Lending rates; Personal loans; Revolving credit; Credit cards; Standard', 'Lending rates; Personal loans; Revolving credit; Credit cards; Low rate', 'Lending rates; Small business; Variable; Other; Term', 'Lending rates; Small business; Variable; Residential-secured; Overdraft', 'Lending rates; Small business; Variable; Small overdraft', 'Lending rates; Small business; Variable; Weighted-average rate on credit outstanding', 'Lending rates; Small business; 3-year fixed', 'Lending rates; Large business; Weighted-average rate on credit outstanding; Variable', 'Lending rates; Large business; Weighted-average rate on credit outstanding; Bills', 'Lending rates; Personal loans; Term loans (unsecured); Fixed', 'Lending rates; Personal loans; Term loans (unsecured); Variable', 'Lending rates; Personal loans; Revolving credit; Home equity loans', 'Lending rates; Personal loans; Revolving credit; Margin loans', 'Lending rates; Housing loans; Mortgage managers; Variable; Standard', 'Lending rates; Housing loans; Mortgage managers; Variable; Basic', 'Lending rates; Securitised housing loans; Average outstanding variable rate', 'Lending rates; Securitised housing loans; Average outstanding variable rate; Owner-occupier; Principal & Interest', 'Lending rates; Securitised housing loans; Average outstanding variable rate; Owner-occupier; Interest Only', 'Lending rates; Securitised housing loans; Average outstanding variable rate; Investor; Principal & Interest', 'Lending rates; Securitised housing loans; Average outstanding variable rate; Investor; Interest Only']
+2: ['Description', 'Lending rates; Small business; Variable; Term', 'Lending rates; Small business; Variable; Overdraft', 'Lending rates; Housing loans; Banks; Variable; Standard; Owner-occupier', 'Lending rates; Housing loans; Banks; Variable; Discounted; Owner-occupier', 'Lending rates; Housing loans; Banks; Variable; Standard interest-only; Owner-occupier', 'Lending rates; Housing loans; Banks; 3-year fixed; Owner-occupier', 'Lending rates; Housing loans; Banks; Variable; Standard; Investor', 'Lending rates; Housing loans; Banks; Variable; Discounted; Investor', 'Lending rates; Housing loans; Banks; Variable; Standard interest-only; Investor', 'Lending rates; Housing loans; Banks; 3-year fixed; Investor', 'Lending rates; Personal loans; Revolving credit; Credit cards; Standard rate', 'Lending rates; Personal loans; Revolving credit; Credit cards; Low rate', 'Lending rates; Small business; Variable; Other; Term – For series breaks see Series Breaks', 'Lending rates; Small business; Variable; Residential-secured; Overdraft – For series breaks see Series Breaks', 'Lending rates; Small business; Variable; Small overdraft – For series breaks see Series Breaks', 'Lending rates; Small business; Variable; Weighted-average rate on credit outstanding – For series breaks see Series Breaks', 'Lending rates; Small business; 3-year fixed – For series breaks see Series Breaks', 'Lending rates; Large business; Weighted-average rate on credit outstanding; Variable', 'Lending rates; Large business; Weighted-average rate on credit outstanding; Bills', 'Lending rates; Personal loans; Term loans (unsecured); Fixed – For series breaks see Series Breaks', 'Lending rates; Personal loans; Term loans (unsecured); Variable', 'Lending rates; Personal loans; Revolving credit; Home equity loans', 'Lending rates; Personal loans; Revolving credit; Margin loans', 'Lending rates; Housing loans; Mortgage managers; Variable; Standard', 'Lending rates; Housing loans; Mortgage managers; Variable; Basic', 'Lending rates; Securitised housing loans; Average outstanding variable rate', 'Lending rates; Securitised housing loans; Average outstanding variable rate; Owner-occupier; Principal & Interest', 'Lending rates; Securitised housing loans; Average outstanding variable rate; Owner-occupier; Interest Only', 'Lending rates; Securitised housing loans; Average outstanding variable rate; Investor; Principal & Interest', 'Lending rates; Securitised housing loans; Average outstanding variable rate; Investor; Interest Only']
+3: ['Frequency', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly']
+4: ['Type', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original']
+5: ['Units', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum']
+6: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+7: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+8: ['Source', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'APRA', 'CANSTAR data; RBA', 'APRA', 'APRA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'RBA; Securitisation System', 'RBA; Securitisation System', 'RBA; Securitisation System', 'RBA; Securitisation System', 'RBA; Securitisation System']
+9: ['Publication date', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '', '', '', '', '', '', '', '', '']
+10: ['Series ID', 'FILRSBVRT', 'FILRSBVOO', 'FILRHLBVS', 'FILRHLBVD', 'FILRHLBVO', 'FILRHL3YF', 'FILRHLBVSI', 'FILRHLBVDI', 'FILRHLBVDO', 'FILRHL3YFI', 'FILRPLRCCS', 'FILRPLRCCL', 'FILRSBVOT', 'FILRSBVRO', 'FILRSBVSO', 'FILRSBVWA', 'FILRSB3YF', 'FILRLBWAV', 'FILRLBWAB', 'FILRPLTUF', 'FILRPLTUV', 'FILRPLRCHE', 'FILRPLRCML', 'FILRHLMMS', 'FILRHLMMB', 'FILRSAVR', 'FILRSAVOPI', 'FILRSAVOI', 'FILRSAVIPI', 'FILRSAVIIO']
+11: ['21581', '', '', '5', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+12: ['21609', '', '', '5', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+
+=== F5 column descriptions ===
+col 1: Lending rates; Small business; Variable; Term | series_id=FILRSBVRT
+col 2: Lending rates; Small business; Variable; Overdraft | series_id=FILRSBVOO
+col 3: Lending rates; Housing loans; Banks; Variable; Standard; Owner-occupier | series_id=FILRHLBVS
+col 4: Lending rates; Housing loans; Banks; Variable; Discounted; Owner-occupier | series_id=FILRHLBVD
+col 5: Lending rates; Housing loans; Banks; Variable; Standard interest-only; Owner-occupier | series_id=FILRHLBVO
+col 6: Lending rates; Housing loans; Banks; 3-year fixed; Owner-occupier | series_id=FILRHL3YF
+col 7: Lending rates; Housing loans; Banks; Variable; Standard; Investor | series_id=FILRHLBVSI
+col 8: Lending rates; Housing loans; Banks; Variable; Discounted; Investor | series_id=FILRHLBVDI
+col 9: Lending rates; Housing loans; Banks; Variable; Standard interest-only; Investor | series_id=FILRHLBVDO
+col 10: Lending rates; Housing loans; Banks; 3-year fixed; Investor | series_id=FILRHL3YFI
+col 11: Lending rates; Personal loans; Revolving credit; Credit cards; Standard rate | series_id=FILRPLRCCS
+col 12: Lending rates; Personal loans; Revolving credit; Credit cards; Low rate | series_id=FILRPLRCCL
+col 13: Lending rates; Small business; Variable; Other; Term – For series breaks see Series Breaks | series_id=FILRSBVOT
+col 14: Lending rates; Small business; Variable; Residential-secured; Overdraft – For series breaks see Series Breaks | series_id=FILRSBVRO
+col 15: Lending rates; Small business; Variable; Small overdraft – For series breaks see Series Breaks | series_id=FILRSBVSO
+col 16: Lending rates; Small business; Variable; Weighted-average rate on credit outstanding – For series breaks see Series Breaks | series_id=FILRSBVWA
+col 17: Lending rates; Small business; 3-year fixed – For series breaks see Series Breaks | series_id=FILRSB3YF
+col 18: Lending rates; Large business; Weighted-average rate on credit outstanding; Variable | series_id=FILRLBWAV
+col 19: Lending rates; Large business; Weighted-average rate on credit outstanding; Bills | series_id=FILRLBWAB
+col 20: Lending rates; Personal loans; Term loans (unsecured); Fixed – For series breaks see Series Breaks | series_id=FILRPLTUF
+col 21: Lending rates; Personal loans; Term loans (unsecured); Variable | series_id=FILRPLTUV
+col 22: Lending rates; Personal loans; Revolving credit; Home equity loans | series_id=FILRPLRCHE
+col 23: Lending rates; Personal loans; Revolving credit; Margin loans | series_id=FILRPLRCML
+col 24: Lending rates; Housing loans; Mortgage managers; Variable; Standard | series_id=FILRHLMMS
+col 25: Lending rates; Housing loans; Mortgage managers; Variable; Basic | series_id=FILRHLMMB
+col 26: Lending rates; Securitised housing loans; Average outstanding variable rate | series_id=FILRSAVR
+col 27: Lending rates; Securitised housing loans; Average outstanding variable rate; Owner-occupier; Principal & Interest | series_id=FILRSAVOPI
+col 28: Lending rates; Securitised housing loans; Average outstanding variable rate; Owner-occupier; Interest Only | series_id=FILRSAVOI
+col 29: Lending rates; Securitised housing loans; Average outstanding variable rate; Investor; Principal & Interest | series_id=FILRSAVIPI
+col 30: Lending rates; Securitised housing loans; Average outstanding variable rate; Investor; Interest Only | series_id=FILRSAVIIO
+
+=== F4 raw rows 0-12 ===
+0: ['F4 RETAIL DEPOSIT AND INVESTMENT RATES', '']
+1: ['Title', 'Retail deposit and investment rates; Transaction accounts; Banks; $5000', 'Retail deposit and investment rates; Transaction accounts; Building societies; $5000', 'Retail deposit and investment rates; Transaction accounts; Credit unions; $5000', 'Retail deposit and investment rates; Transaction accounts; Building societies, credit unions and mutual banks; $5000', "Retail deposit and investment rates; Savings accounts; Banks' bonus savings accounts; $10000", 'Retail deposit and investment rates; Savings accounts; Online savings accounts; $10000', 'Retail deposit and investment rates; Savings accounts; Cash management accounts at banks; $10000', 'Retail deposit and investment rates; Savings accounts; Cash management accounts at banks; $50000', 'Retail deposit and investment rates; Cash management trusts', "Retail deposit and investment rates; Banks' term deposits ($10000); 1 month", "Retail deposit and investment rates; Banks' term deposits ($10000); 3 months", "Retail deposit and investment rates; Banks' term deposits ($10000); 6 months", "Retail deposit and investment rates; Banks' term deposits ($10000); 1 year", "Retail deposit and investment rates; Banks' term deposits ($10000); 3 years", "Retail deposit and investment rates; Banks' term deposits ($10000); Average rate (all terms)"]
+2: ['Description', 'Retail deposit and investment rates; Transaction accounts; Banks; $5000 – For series breaks see Series Breaks', 'Retail deposit and investment rates; Transaction accounts; Building societies; $5000', 'Retail deposit and investment rates; Transaction accounts; Credit unions; $5000', 'Retail deposit and investment rates; Transaction accounts; Building societies, credit unions and mutual banks; $5000', "Retail deposit and investment rates; Savings accounts; Banks' bonus savings accounts; $10000 – For series breaks see Series Breaks", 'Retail deposit and investment rates; Savings accounts; Online savings accounts; $10000', 'Retail deposit and investment rates; Savings accounts; Cash management accounts at banks; $10000 – For series breaks see Series Breaks', 'Retail deposit and investment rates; Savings accounts; Cash management accounts at banks; $50000 – For series breaks see Series Breaks', 'Retail deposit and investment rates; Cash management trusts', "Retail deposit and investment rates; Banks' term deposits ($10000); 1 month – For series breaks see Series Breaks", "Retail deposit and investment rates; Banks' term deposits ($10000); 3 months – For series breaks see Series Breaks", "Retail deposit and investment rates; Banks' term deposits ($10000); 6 months – For series breaks see Series Breaks", "Retail deposit and investment rates; Banks' term deposits ($10000); 1 year – For series breaks see Series Breaks", "Retail deposit and investment rates; Banks' term deposits ($10000); 3 years – For series breaks see Series Breaks", "Retail deposit and investment rates; Banks' term deposits ($10000); Average rate (all terms) – For series breaks see Series Breaks"]
+3: ['Frequency', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly']
+4: ['Type', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original']
+5: ['Units', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum']
+6: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+7: ['', '', '', '', '', '', '']
+8: ['Source', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'ABS', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', 'CANSTAR data; RBA', '']
+9: ['Publication date', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026']
+10: ['Series ID', 'FRDIRTAB5K', 'FRDIRTABS5K', 'FRDIRTACU5K', 'FRDIRTAMA5K', 'FRDIRSAB10K', 'FRDIRSAO10K', 'FRDIRSAC10K', 'FRDIRSAC50K', 'FRDIRCMT', 'FRDIRBTD10K1M', 'FRDIRBTD10K3M', 'FRDIRBTD10K6M', 'FRDIRBTD10K1Y', 'FRDIRBTD10K3Y', 'FRDIRBTD10KAR']
+11: ['29951', '', '', '', '', '', '', '', '', '', '', '11.65', '11.65', '11.9', '', '']
+12: ['29982', '', '', '', '', '', '', '', '', '', '', '11.65', '11.65', '11.9', '', '']
+
+=== F4 column descriptions ===
+col 1: Retail deposit and investment rates; Transaction accounts; Banks; $5000 – For series breaks see Series Breaks | series_id=FRDIRTAB5K
+col 2: Retail deposit and investment rates; Transaction accounts; Building societies; $5000 | series_id=FRDIRTABS5K
+col 3: Retail deposit and investment rates; Transaction accounts; Credit unions; $5000 | series_id=FRDIRTACU5K
+col 4: Retail deposit and investment rates; Transaction accounts; Building societies, credit unions and mutual banks; $5000 | series_id=FRDIRTAMA5K
+col 5: Retail deposit and investment rates; Savings accounts; Banks' bonus savings accounts; $10000 – For series breaks see Series Breaks | series_id=FRDIRSAB10K
+col 6: Retail deposit and investment rates; Savings accounts; Online savings accounts; $10000 | series_id=FRDIRSAO10K
+col 7: Retail deposit and investment rates; Savings accounts; Cash management accounts at banks; $10000 – For series breaks see Series Breaks | series_id=FRDIRSAC10K
+col 8: Retail deposit and investment rates; Savings accounts; Cash management accounts at banks; $50000 – For series breaks see Series Breaks | series_id=FRDIRSAC50K
+col 9: Retail deposit and investment rates; Cash management trusts | series_id=FRDIRCMT
+col 10: Retail deposit and investment rates; Banks' term deposits ($10000); 1 month – For series breaks see Series Breaks | series_id=FRDIRBTD10K1M
+col 11: Retail deposit and investment rates; Banks' term deposits ($10000); 3 months – For series breaks see Series Breaks | series_id=FRDIRBTD10K3M
+col 12: Retail deposit and investment rates; Banks' term deposits ($10000); 6 months – For series breaks see Series Breaks | series_id=FRDIRBTD10K6M
+col 13: Retail deposit and investment rates; Banks' term deposits ($10000); 1 year – For series breaks see Series Breaks | series_id=FRDIRBTD10K1Y
+col 14: Retail deposit and investment rates; Banks' term deposits ($10000); 3 years – For series breaks see Series Breaks | series_id=FRDIRBTD10K3Y
+col 15: Retail deposit and investment rates; Banks' term deposits ($10000); Average rate (all terms) – For series breaks see Series Breaks | series_id=FRDIRBTD10KAR
+
+=== F6 raw rows 0-12 ===
+0: ['F6 - HOUSING LENDING RATES', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+1: ['Title', 'Lending rates; Housing credit; Outstanding; Owner-occupied; All loans; Large institutions', 'Lending rates; Housing credit; Outstanding; Owner-occupied; All loans; All institutions', 'Lending rates; Housing credit; Outstanding; Owner-occupied; Variable-rate; Large institutions', 'Lending rates; Housing credit; Outstanding; Owner-occupied; Variable-rate; All institutions', 'Lending rates; Housing credit; Outstanding; Owner-occupied; Fixed-rate, by residual fixed term; Less than or equal to 3 years', 'Lending rates; Housing credit; Outstanding; Owner-occupied; Fixed-rate, by residual fixed term; Greater than 3 years', 'Lending rates; Housing credit; Outstanding; Owner-occupied; By repayment type; Interest-only', 'Lending rates; Housing credit; Outstanding; Owner-occupied; By repayment type; Principal-and-interest', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; All loans; Large institutions', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; All loans; All institutions', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; Variable-rate; Large institutions', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; Variable-rate; All institutions', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; Fixed-rate, by residual fixed term; Less than or equal to 3 years', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; Fixed-rate, by residual fixed term; Greater than 3 years', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By repayment type; Interest-only', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By repayment type; Principal-and-interest', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By loan-to-valuation ratio at commitment; Less than 81%', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By loan-to-valuation ratio at commitment; Greater than or equal to 81%', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By value at commitment; Less than or equal to $600,000', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By value at commitment; $600,000 - $1,000,000', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By value at commitment; Greater than $1,000,000', 'Lending rates; Housing credit; Outstanding; Investment; All loans; Large institutions', 'Lending rates; Housing credit; Outstanding; Investment; All loans; All institutions', 'Lending rates; Housing credit; Outstanding; Investment; Variable-rate; Large institutions', 'Lending rates; Housing credit; Outstanding; Investment; Variable-rate; All institutions', 'Lending rates; Housing credit; Outstanding; Investment; Fixed-rate, by residual fixed term; Less than or equal to 3 years', 'Lending rates; Housing credit; Outstanding; Investment; Fixed-rate, by residual fixed term; Greater than 3 years', 'Lending rates; Housing credit; Outstanding; Investment; By repayment type; Interest-only', 'Lending rates; Housing credit; Outstanding; Investment; By repayment type; Principal-and-interest', 'Lending rates; Housing credit; New loans funded in the month; Investment; All loans; Large institutions', 'Lending rates; Housing credit; New loans funded in the month; Investment; All loans; All institutions', 'Lending rates; Housing credit; New loans funded in the month; Investment; Variable-rate; Large institutions', 'Lending rates; Housing credit; New loans funded in the month; Investment; Variable-rate; All institutions', 'Lending rates; Housing credit; New loans funded in the month; Investment; Fixed, by residual fixed term; Less than or equal to 3 years', 'Lending rates; Housing credit; New loans funded in the month; Investment; Fixed, by residual fixed term; Greater than 3 years', 'Lending rates; Housing credit; New loans funded in the month; Investment; By repayment type; Interest-only', 'Lending rates; Housing credit; New loans funded in the month; Investment; By repayment type; Principal-and-interest', 'Lending rates; Housing credit; New loans funded in the month; Investment; By loan-to-valuation ratio at commitment; Less than 81%', 'Lending rates; Housing credit; New loans funded in the month; Investment; By loan-to-valuation ratio at commitment; Greater than or equal to 81%', 'Lending rates; Housing credit; New loans funded in the month; Investment; By value at commitment; Less than or equal to $600,000', 'Lending rates; Housing credit; New loans funded in the month; Investment; By value at commitment; $600,000 - $1,000,000', 'Lending rates; Housing credit; New loans funded in the month; Investment; By value at commitment; Greater than $1,000,000']
+2: ['Description', 'Lending rates; Housing credit; Outstanding; Owner-occupied; All loans; Large institutions', 'Lending rates; Housing credit; Outstanding; Owner-occupied; All loans; All institutions', 'Lending rates; Housing credit; Outstanding; Owner-occupied; Variable-rate; Large institutions', 'Lending rates; Housing credit; Outstanding; Owner-occupied; Variable-rate; All institutions', 'Lending rates; Housing credit; Outstanding; Owner-occupied; Fixed-rate, by residual fixed term; Less than or equal to 3 years', 'Lending rates; Housing credit; Outstanding; Owner-occupied; Fixed-rate, by residual fixed term; Greater than 3 years', 'Lending rates; Housing credit; Outstanding; Owner-occupied; By repayment type; Interest-only', 'Lending rates; Housing credit; Outstanding; Owner-occupied; By repayment type; Principal-and-interest', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; All loans; Large institutions', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; All loans; All institutions', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; Variable-rate; Large institutions', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; Variable-rate; All institutions', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; Fixed-rate, by residual fixed term; Less than or equal to 3 years', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; Fixed-rate, by residual fixed term; Greater than 3 years', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By repayment type; Interest-only', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By repayment type; Principal-and-interest', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By loan-to-valuation ratio at commitment; Less than 81%', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By loan-to-valuation ratio at commitment; Greater than or equal to 81%', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By value at commitment; Less than or equal to $600,000', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By value at commitment; $600,000 - $1,000,000', 'Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By value at commitment; Greater than $1,000,000', 'Lending rates; Housing credit; Outstanding; Investment; All loans; Large institutions', 'Lending rates; Housing credit; Outstanding; Investment; All loans; All institutions', 'Lending rates; Housing credit; Outstanding; Investment; Variable-rate; Large institutions', 'Lending rates; Housing credit; Outstanding; Investment; Variable-rate; All institutions', 'Lending rates; Housing credit; Outstanding; Investment; Fixed-rate, by residual fixed term; Less than or equal to 3 years', 'Lending rates; Housing credit; Outstanding; Investment; Fixed-rate, by residual fixed term; Greater than 3 years', 'Lending rates; Housing credit; Outstanding; Investment; By repayment type; Interest-only', 'Lending rates; Housing credit; Outstanding; Investment; By repayment type; Principal-and-interest', 'Lending rates; Housing credit; New loans funded in the month; Investment; All loans; Large institutions', 'Lending rates; Housing credit; New loans funded in the month; Investment; All loans; All institutions', 'Lending rates; Housing credit; New loans funded in the month; Investment; Variable-rate; Large institutions', 'Lending rates; Housing credit; New loans funded in the month; Investment; Variable-rate; All institutions', 'Lending rates; Housing credit; New loans funded in the month; Investment; Fixed, by residual fixed term; Less than or equal to 3 years', 'Lending rates; Housing credit; New loans funded in the month; Investment; Fixed, by residual fixed term; Greater than 3 years', 'Lending rates; Housing credit; New loans funded in the month; Investment; By repayment type; Interest-only', 'Lending rates; Housing credit; New loans funded in the month; Investment; By repayment type; Principal-and-interest', 'Lending rates; Housing credit; New loans funded in the month; Investment; By loan-to-valuation ratio at commitment; Less than 81%', 'Lending rates; Housing credit; New loans funded in the month; Investment; By loan-to-valuation ratio at commitment; Greater than or equal to 81%', 'Lending rates; Housing credit; New loans funded in the month; Investment; By value at commitment; Less than or equal to $600,000', 'Lending rates; Housing credit; New loans funded in the month; Investment; By value at commitment; $600,000 - $1,000,000', 'Lending rates; Housing credit; New loans funded in the month; Investment; By value at commitment; Greater than $1,000,000', '']
+3: ['Frequency', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', 'Monthly', '']
+4: ['Type', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', 'Original', '']
+5: ['Units', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum', 'Per cent per annum']
+6: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+7: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+8: ['Source', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA', 'APRA, RBA']
+9: ['Publication date', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026', '08-Oct-2026']
+10: ['Series ID', 'FLRHOOTL', 'FLRHOOTA', 'FLRHOOVL', 'FLRHOOVA', 'FLRHOOFA', 'FLRHOOFB', 'FLRHOOI', 'FLRHOOP', 'FLRHOFTL', 'FLRHOFTA', 'FLRHOFVL', 'FLRHOFVA', 'FLRHOFFA', 'FLRHOFFB', 'FLRHOFI', 'FLRHOFP', 'FLRHOLA', 'FLRHOLB', 'FLRHOVA', 'FLRHOVB', 'FLRHOVC', 'FLRHIOTL', 'FLRHIOTA', 'FLRHIOVL', 'FLRHIOVA', 'FLRHIOFA', 'FLRHIOFB', 'FLRHIOI', 'FLRHIOP', 'FLRHIFTL', 'FLRHIFTA', 'FLRHIFVL', 'FLRHIFVA', 'FLRHIFFA', 'FLRHIFFB', 'FLRHIFI', 'FLRHIFP', 'FLRHILA', 'FLRHILB', 'FLRHIVA', 'FLRHIVB', 'FLRHIVC']
+11: ['43677', '3.83', '3.84', '3.8', '3.81', '3.94', '4.35', '4.31', '3.77', '3.52', '3.49', '3.53', '3.5', '3.43', '3.76', '4', '3.52', '3.47', '3.56', '3.49', '3.47', '3.52', '4.31', '4.31', '4.36', '4.35', '4.17', '4.69', '4.49', '4.15', '3.96', '3.88', '4', '3.9', '3.81', '4.15', '4.16', '3.79', '3.88', '3.96', '3.87', '3.92', '3.92']
+12: ['43708', '3.81', '3.82', '3.78', '3.79', '3.91', '4.28', '4.35', '3.75', '3.47', '3.47', '3.51', '3.51', '3.21', '3.62', '3.95', '3.43', '3.46', '3.51', '3.47', '3.46', '3.49', '4.27', '4.27', '4.31', '4.31', '4.15', '4.62', '4.48', '4.11', '3.91', '3.88', '3.97', '3.92', '3.69', '4.15', '4.08', '3.77', '3.88', '3.92', '3.88', '3.88', '3.91']
+
+=== F6 column descriptions ===
+col 1: Lending rates; Housing credit; Outstanding; Owner-occupied; All loans; Large institutions | series_id=FLRHOOTL
+col 2: Lending rates; Housing credit; Outstanding; Owner-occupied; All loans; All institutions | series_id=FLRHOOTA
+col 3: Lending rates; Housing credit; Outstanding; Owner-occupied; Variable-rate; Large institutions | series_id=FLRHOOVL
+col 4: Lending rates; Housing credit; Outstanding; Owner-occupied; Variable-rate; All institutions | series_id=FLRHOOVA
+col 5: Lending rates; Housing credit; Outstanding; Owner-occupied; Fixed-rate, by residual fixed term; Less than or equal to 3 years | series_id=FLRHOOFA
+col 6: Lending rates; Housing credit; Outstanding; Owner-occupied; Fixed-rate, by residual fixed term; Greater than 3 years | series_id=FLRHOOFB
+col 7: Lending rates; Housing credit; Outstanding; Owner-occupied; By repayment type; Interest-only | series_id=FLRHOOI
+col 8: Lending rates; Housing credit; Outstanding; Owner-occupied; By repayment type; Principal-and-interest | series_id=FLRHOOP
+col 9: Lending rates; Housing credit; New loans funded in the month; Owner-occupied; All loans; Large institutions | series_id=FLRHOFTL
+col 10: Lending rates; Housing credit; New loans funded in the month; Owner-occupied; All loans; All institutions | series_id=FLRHOFTA
+col 11: Lending rates; Housing credit; New loans funded in the month; Owner-occupied; Variable-rate; Large institutions | series_id=FLRHOFVL
+col 12: Lending rates; Housing credit; New loans funded in the month; Owner-occupied; Variable-rate; All institutions | series_id=FLRHOFVA
+col 13: Lending rates; Housing credit; New loans funded in the month; Owner-occupied; Fixed-rate, by residual fixed term; Less than or equal to 3 years | series_id=FLRHOFFA
+col 14: Lending rates; Housing credit; New loans funded in the month; Owner-occupied; Fixed-rate, by residual fixed term; Greater than 3 years | series_id=FLRHOFFB
+col 15: Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By repayment type; Interest-only | series_id=FLRHOFI
+col 16: Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By repayment type; Principal-and-interest | series_id=FLRHOFP
+col 17: Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By loan-to-valuation ratio at commitment; Less than 81% | series_id=FLRHOLA
+col 18: Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By loan-to-valuation ratio at commitment; Greater than or equal to 81% | series_id=FLRHOLB
+col 19: Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By value at commitment; Less than or equal to $600,000 | series_id=FLRHOVA
+col 20: Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By value at commitment; $600,000 - $1,000,000 | series_id=FLRHOVB
+col 21: Lending rates; Housing credit; New loans funded in the month; Owner-occupied; By value at commitment; Greater than $1,000,000 | series_id=FLRHOVC
+col 22: Lending rates; Housing credit; Outstanding; Investment; All loans; Large institutions | series_id=FLRHIOTL
+col 23: Lending rates; Housing credit; Outstanding; Investment; All loans; All institutions | series_id=FLRHIOTA
+col 24: Lending rates; Housing credit; Outstanding; Investment; Variable-rate; Large institutions | series_id=FLRHIOVL
+col 25: Lending rates; Housing credit; Outstanding; Investment; Variable-rate; All institutions | series_id=FLRHIOVA
+col 26: Lending rates; Housing credit; Outstanding; Investment; Fixed-rate, by residual fixed term; Less than or equal to 3 years | series_id=FLRHIOFA
+col 27: Lending rates; Housing credit; Outstanding; Investment; Fixed-rate, by residual fixed term; Greater than 3 years | series_id=FLRHIOFB
+col 28: Lending rates; Housing credit; Outstanding; Investment; By repayment type; Interest-only | series_id=FLRHIOI
+col 29: Lending rates; Housing credit; Outstanding; Investment; By repayment type; Principal-and-interest | series_id=FLRHIOP
+col 30: Lending rates; Housing credit; New loans funded in the month; Investment; All loans; Large institutions | series_id=FLRHIFTL
+col 31: Lending rates; Housing credit; New loans funded in the month; Investment; All loans; All institutions | series_id=FLRHIFTA
+col 32: Lending rates; Housing credit; New loans funded in the month; Investment; Variable-rate; Large institutions | series_id=FLRHIFVL
+col 33: Lending rates; Housing credit; New loans funded in the month; Investment; Variable-rate; All institutions | series_id=FLRHIFVA
+col 34: Lending rates; Housing credit; New loans funded in the month; Investment; Fixed, by residual fixed term; Less than or equal to 3 years | series_id=FLRHIFFA
+col 35: Lending rates; Housing credit; New loans funded in the month; Investment; Fixed, by residual fixed term; Greater than 3 years | series_id=FLRHIFFB
+col 36: Lending rates; Housing credit; New loans funded in the month; Investment; By repayment type; Interest-only | series_id=FLRHIFI
+col 37: Lending rates; Housing credit; New loans funded in the month; Investment; By repayment type; Principal-and-interest | series_id=FLRHIFP
+col 38: Lending rates; Housing credit; New loans funded in the month; Investment; By loan-to-valuation ratio at commitment; Less than 81% | series_id=FLRHILA
+col 39: Lending rates; Housing credit; New loans funded in the month; Investment; By loan-to-valuation ratio at commitment; Greater than or equal to 81% | series_id=FLRHILB
+col 40: Lending rates; Housing credit; New loans funded in the month; Investment; By value at commitment; Less than or equal to $600,000 | series_id=FLRHIVA
+col 41: Lending rates; Housing credit; New loans funded in the month; Investment; By value at commitment; $600,000 - $1,000,000 | series_id=FLRHIVB
+col 42: Lending rates; Housing credit; New loans funded in the month; Investment; By value at commitment; Greater than $1,000,000 | series_id=FLRHIVC
+
+=== Selected series verification ===
+
+cash_rate
+table: F1.1
+description: Cash Rate Target; monthly average
+series_id: FIRMMCRT
+date range: 1990-08 to 2026-09
+first 5 non-missing rows:
+  1990-08 14
+  1990-09 14
+  1990-10 13.43
+  1990-11 13
+  1990-12 12.58
+last 5 non-missing rows:
+  2026-05 4.31
+  2026-06 4.35
+  2026-07 4.35
+  2026-08 4.35
+  2026-09 4.36
+
+mortgage_variable
+table: F5
+description: Lending rates; Housing loans; Banks; Variable; Standard; Owner-occupier
+series_id: FILRHLBVS
+date range: 1959-01 to 2026-09
+first 5 non-missing rows:
+  1959-01 5
+  1959-02 5
+  1959-03 5
+  1959-04 5
+  1959-05 5
+last 5 non-missing rows:
+  2026-05 8.77
+  2026-06 8.77
+  2026-07 8.77
+  2026-08 8.77
+  2026-09 8.77
+
+mortgage_discounted
+table: F5
+description: Lending rates; Housing loans; Banks; Variable; Discounted; Owner-occupier
+series_id: FILRHLBVD
+date range: 2004-06 to 2026-09
+first 5 non-missing rows:
+  2004-06 6.59
+  2004-07 6.59
+  2004-08 6.59
+  2004-09 6.59
+  2004-10 6.59
+last 5 non-missing rows:
+  2026-05 6.8
+  2026-06 6.8
+  2026-07 6.8
+  2026-08 6.8
+  2026-09 6.8
+
+mortgage_outstanding
+table: F6
+description: Lending rates; Housing credit; Outstanding; Owner-occupied; Variable-rate; All institutions
+series_id: FLRHOOVA
+date range: 2019-07 to 2026-08
+first 5 non-missing rows:
+  2019-07 3.81
+  2019-08 3.79
+  2019-09 3.77
+  2019-10 3.64
+  2019-11 3.63
+last 5 non-missing rows:
+  2026-04 6
+  2026-05 6.24
+  2026-06 6.25
+  2026-07 6.24
+  2026-08 6.24
+
+mortgage_new
+table: F6
+description: Lending rates; Housing credit; New loans funded in the month; Owner-occupied; Variable-rate; All institutions
+series_id: FLRHOFVA
+date range: 2019-07 to 2026-08
+first 5 non-missing rows:
+  2019-07 3.5
+  2019-08 3.51
+  2019-09 3.49
+  2019-10 3.33
+  2019-11 3.31
+last 5 non-missing rows:
+  2026-04 5.99
+  2026-05 6.24
+  2026-06 6.25
+  2026-07 6.24
+  2026-08 6.23
+
+saver_online
+table: F4
+description: Retail deposit and investment rates; Savings accounts; Online savings accounts; $10000
+series_id: FRDIRSAO10K
+date range: 2004-01 to 2026-09
+first 5 non-missing rows:
+  2004-01 4.95
+  2004-02 5
+  2004-03 5
+  2004-04 5
+  2004-05 5
+last 5 non-missing rows:
+  2026-05 3.05
+  2026-06 3.1
+  2026-07 3.1
+  2026-08 3.1
+  2026-09 3.1
+
+term_deposit
+table: F4
+description: Retail deposit and investment rates; Banks' term deposits ($10000); 1 year – For series breaks see Series Breaks
+series_id: FRDIRBTD10K1Y
+date range: 1981-12 to 2026-09
+first 5 non-missing rows:
+  1981-12 11.9
+  1982-01 11.9
+  1982-02 12.4
+  1982-03 12.4
+  1982-04 13.4
+last 5 non-missing rows:
+  2026-05 5.05
+  2026-06 5.05
+  2026-07 5
+  2026-08 4.95
+  2026-09 5
+
+=== Merged frame tail(18) ===
+date    | cash_rate | mortgage_variable | saver_online | term_deposit | mortgage_outstanding | mortgage_new
+--------+-----------+-------------------+--------------+--------------+----------------------+-------------
+2025-04 | 4.10      | 8.52              | 2.65         | 3.90         | 6.05                 | 5.99        
+2025-05 | 4.01      | 8.37              | 2.45         | 3.80         | 5.89                 | 5.84        
+2025-06 | 3.85      | 8.27              | 2.45         | 3.70         | 5.79                 | 5.75        
+2025-07 | 3.85      | 8.27              | 2.45         | 3.60         | 5.78                 | 5.75        
+2025-08 | 3.70      | 8.02              | 2.30         | 3.60         | 5.54                 | 5.51        
+2025-09 | 3.60      | 8.02              | 2.30         | 3.60         | 5.52                 | 5.51        
+2025-10 | 3.60      | 8.02              | 2.30         | 3.60         | 5.52                 | 5.50        
+2025-11 | 3.60      | 8.02              | 2.30         | 3.70         | 5.52                 | 5.49        
+2025-12 | 3.60      | 8.02              | 2.30         | 3.75         | 5.51                 | 5.50        
+2026-01 | 3.60      | 8.02              | 2.30         | 3.90         | 5.51                 | 5.51        
+2026-02 | 3.83      | 8.27              | 2.50         | 3.95         | 5.75                 | 5.73        
+2026-03 | 3.96      | 8.52              | 2.70         | 4.50         | 5.95                 | 5.93        
+2026-04 | 4.10      | 8.52              | 2.70         | 5.00         | 6.00                 | 5.99        
+2026-05 | 4.31      | 8.77              | 3.05         | 5.05         | 6.24                 | 6.24        
+2026-06 | 4.35      | 8.77              | 3.10         | 5.05         | 6.25                 | 6.25        
+2026-07 | 4.35      | 8.77              | 3.10         | 5.00         | 6.24                 | 6.24        
+2026-08 | 4.35      | 8.77              | 3.10         | 4.95         | 6.24                 | 6.23        
+2026-09 | 4.36      | 8.77              | 3.10         | 5.00         | n/a                  | n/a         
+
+Latest merged month with any selected observation: 2026-09
+Latest common month with all core (F1.1/F4/F5) series: 2026-09
+Latest F6 month: 2026-08
+
+=== Missing values in selected merged frame, Jan 2020 to latest ===
+cash_rate: none
+mortgage_variable: none
+saver_online: none
+term_deposit: none
+mortgage_outstanding: 1 missing months; first few: 2026-09
+mortgage_new: 1 missing months; first few: 2026-09
